@@ -59,7 +59,7 @@ PRODUCTOS = [
     }
 ]
 
-WHATSAPP_NUMBER = "595XXXXXXXXX"
+WHATSAPP_NUMBER = "595981715613"
 
 
 HTML_TEMPLATE = """
@@ -964,7 +964,8 @@ HTML_TEMPLATE = """
     // PRODUCTOS RECIBIDOS DESDE PYTHON
 
     const productos = {{ productos | tojson }};
-
+    const WHATSAPP_NUMBER = {{ WHATSAPP_NUMBER | tojson }};
+    const WHATSAPP_CONFIGURADO = {{ WHATSAPP_CONFIGURADO | tojson }};
     let productoActual = null;
     let carrito = [];
 
