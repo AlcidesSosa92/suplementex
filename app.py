@@ -12,6 +12,50 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # ============================================================
 
 PRODUCTOS = [{
+        "id": "Whey-Cutter-SPX",
+        "nombre": "Whey Cutter (SPX Nutrition)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína 100% Whey con el agregado del potente CLA (quemador de grasa y reductor de colesterol malo) y endulzada con Stevia.",
+        "detalle": "Beneficios: Incremento de masa muscular (alta concentración de proteínas de suero lácteo esenciales para el desarrollo y reparación). Reducción de grasa corporal (incluye CLA que ayuda a mejorar la composición corporal). La stevia actúa como hipotensor y cardiotónico, regulando la tensión arterial. Sin carbohidratos añadidos.",
+        "imagen": "Whey-Cutter-SPX.jpg",
+        "presentaciones": [
+            {"tamano": "1080g", "precio": None}
+        ]
+    },
+        {
+        "id": "LiveFem-Nutrilab",
+        "nombre": "Live Fem (Multivitamínico)",
+        "categoria": "Vitaminas y Minerales",
+        "descripcion": "Complejo multivitamínico y antioxidante diseñado especialmente para complementar la nutrición diaria de la mujer.",
+        "detalle": "Aporta una nutrición equilibrada con vitaminas, minerales y fibras. Formulado con ingredientes de alta calidad como té verde, guaraná y ginseng. Diseñado para cubrir los aspectos básicos que toda mujer necesita durante el día, brindando energía, rendimiento y vitalidad.",
+        "imagen": "LiveFem-Nutrilab.jpg",
+        "presentaciones": [
+            {"tamano": "250mg", "precio": None}
+        ]
+    },
+       {
+        "id": "Whey-FEM-Nutrilab",
+        "nombre": "Whey FEM (Nutrilab Supplements)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína especialmente formulada para la mujer. Combina el soporte muscular con nutrientes para la belleza y el bienestar celular.",
+        "detalle": "Aporta 40g de proteína por porción para máxima recuperación muscular. Enriquecida con 2000% VD de Biotina (para piel, cabello y uñas), 1000% VD de Ácido Fólico (soporte metabólico) y 4190 mg de Leucina (desarrollo muscular). Modo de uso: Consumir 1 porción al día, preferentemente post-entrenamiento.",
+        "imagen": "Whey-FEM-Nutrilab.jpg",
+        "presentaciones": [
+            {"tamano": "1 kg", "precio": None}
+        ]
+    },
+     {
+        "id": "Vegetal-Protein-Isolate",
+        "nombre": "Vegetal Protein Isolate (Gold Nutrition)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína aislada de origen 100% vegetal (arveja y arroz) con sabor a vainilla. Ideal para dietas veganas y vegetarianas.",
+        "detalle": "Aporta 30g de proteína por porción, está enriquecida con Vitamina B12, contiene 0% azúcar y es libre de gluten, lactosa y soja. Modo de uso: Mezclar 1 porción (según el envase) con agua o bebida vegetal.",
+        "imagen": "vegetal-protein-isolate.jpg",
+        "presentaciones": [
+            {"tamano": "1 kg", "precio": None}
+        ]
+      },
+        {
         "id": "Whey-Pro-Nutrilab",
         "nombre": "Whey Pro (Nutrilab Supplements)",
         "categoria": "Proteínas",
