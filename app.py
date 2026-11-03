@@ -11,7 +11,40 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # Completá los tamaños y precios cuando tengas la información.
 # ============================================================
 
-PRODUCTOS = [   {
+PRODUCTOS = [{
+        "id": "ENA-Creatina-Colageno",
+        "nombre": "Creatina + Colágeno (ENA)",
+        "categoria": "Creatinas",
+        "descripcion": "Fórmula 2 en 1 que combina la fuerza de la creatina con los beneficios del colágeno. Tu cuerpo más fuerte y saludable, por dentro y por fuera.",
+        "detalle": "Cada porción aporta 5g de Creatina, 5g de Colágeno y 800mg de Vitaminas (30 servicios). Beneficios: Aumenta la masa muscular y el rendimiento físico. Cuida las articulaciones, huesos y cartílagos. Mejora la elasticidad de la piel, el cabello y las uñas. Reduce la fatiga y fortalece el sistema inmunológico. Sin azúcar, sin gluten, sin colorantes ni conservantes artificiales. Sabor: Limón. Modo de uso: Mezclar 1 porción con agua.",
+        "imagen": "ENA-Creatina-Colageno.jpg",
+        "presentaciones": [
+            {"tamano": "30 servicios - Sabor Limón", "precio": None}
+        ]
+    }, 
+        {
+        "id": "Whey-Protein-Body-Advance",
+        "nombre": "Whey Protein Gold Line (Body Advance)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína de suero de leche de alta calidad con fórmula avanzada. Contiene 48g de proteína por porción, ideal para el aumento y mantenimiento de la masa muscular.",
+        "detalle": "Fórmula avanzada por porción: 48g de Proteína, 9.9g de BCAA's, 7g de Glutamina y 4g de Creatina. Beneficios: Aumento y mantenimiento de masa muscular, recuperación post-entrenamiento, fortalece el sistema inmunológico, mejora el rendimiento físico y apoya la pérdida de grasa corporal. Sin azúcar añadida, sin aspartamo ni conservantes artificiales. Sabor: Vainilla. Modo de uso: Mezclar 1 porción (según indicación) con agua o leche.",
+        "imagen": "Whey-Protein-Body-Advance.jpg",
+        "presentaciones": [
+            {"tamano": "900 g (Sabor Vainilla)", "precio": None}
+        ]
+       }, 
+      {
+        "id": "ENA-Ultra-Mass",
+        "nombre": "ENA Ultra Mass (Vanilla Ice Cream)",
+        "categoria": "Ganadores de Peso",
+        "descripcion": "Suplemento diseñado para ganar masa muscular de calidad y aumentar el peso corporal de manera efectiva. Crecé en tamaño, fuerza y rendimiento.",
+        "detalle": "Combina proteínas de alto valor biológico, carbohidratos y vitaminas esenciales. Cada porción (90g) aporta 25g de proteína, 75g de carbohidratos, 399 kcal, 19 vitaminas y minerales. Beneficios: Aumenta la masa muscular, mejora la fuerza y el rendimiento, aporta energía de larga duración y apoya la recuperación muscular. Libre de gluten. Proveedor oficial de la Unión Argentina de Rugby (UAR). Modo de uso: Mezclar 1 porción con agua o leche, ideal post-entrenamiento.",
+        "imagen": "ENA-Ultra-Mass.jpg",
+        "presentaciones": [
+            {"tamano": "1,5 kg (1500 g) - Sabor Vainilla", "precio": None}
+        ]
+    },
+        {
         "id": "ENA-Whey-Protein-TrueMade",
         "nombre": "ENA Whey Protein TrueMade (Vainilla)",
         "categoria": "Proteínas",
