@@ -1,5 +1,8 @@
 from flask import Flask, render_template_string
 from urllib.parse import quote
+import json
+import urllib.request
+import urllib.error
 
 app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 
@@ -8,60 +11,144 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # Completá los tamaños y precios cuando tengas la información.
 # ============================================================
 
-PRODUCTOS = [
-    {
-        "id": "nervomax",
-        "nombre": "Nervomax",
-        "categoria": "Vitaminas y minerales",
-        "descripcion": "Complemento para tu rutina de bienestar.",
-        "detalle": "Agregá aquí la información detallada del producto.",
-        "imagen": "nervomax.jpg",
+PRODUCTOS = [{
+        "id": "Nervomax",
+        "nombre": "Nervomax capsulas",
+        "categoria": "Energía y Rendimiento",
+        "descripcion": "Fórmula premium con 10 activos para mejorar tu concentración, reducir el cansancio y apoyar el sistema nervioso.",
+        "detalle": "Contiene Vitaminas B12, B3 y B12. Modo de uso: Tomar 2 cápsulas al día, preferentemente antes de las principales comidas.",
+        "imagen": "Nervomax.jpg",
         "presentaciones": [
-            {"tamano": "", "precio": None},
-            {"tamano": "", "precio": None}
+            {"tamano": "120 cápsulas", "precio": None},
+            {"tamano": "60 cápsulas", "precio": None}
         ]
     },
     {
-        "id": "creatina",
-        "nombre": "Creatina Monohidrato",
-        "categoria": "Creatina y aminoácidos",
-        "descripcion": "Una opción para complementar tu entrenamiento.",
-        "detalle": "Agregá aquí la información detallada del producto.",
-        "imagen": "",
+        "id": "Calcio-de-Ostra",
+        "nombre": "calcio-ostras 500mg",
+        "categoria": "Salud Ósea", 
+        "descripcion": "Fuente natural de calcio de alta calidad para mantener huesos y dientes fuertes.",
+        "detalle": "Contribuye al mantenimiento de huesos y dientes. Apoya el funcionamiento del organismo y el sistema inmunológico. Modo de uso: Tomar 1 a 2 cápsulas al día.",
+        "imagen": "calcio-ostras.jpg",
         "presentaciones": [
-            {"tamano": "", "precio": None},
-            {"tamano": "", "precio": None}
+            {"tamano": "120 cápsulas", "precio": None},
+            {"tamano": "60 cápsulas", "precio": None}
         ]
     },
     {
-        "id": "bcaa",
-        "nombre": "BCAA 2:1:1",
-        "categoria": "Aminoácidos",
-        "descripcion": "Para quienes buscan complementar su rutina deportiva.",
-        "detalle": "Agregá aquí la información detallada del producto.",
-        "imagen": "",
+        "id": "Carti-Calcio",
+        "nombre": "Carti-Cálcio (Cartílago de Tiburón + Calcio de Ostra)",
+        "categoria": "Huesos y Articulaciones",
+        "descripcion": "Fórmula natural que combina cartílago de tiburón y calcio de ostra para fortalecer huesos y mejorar la flexibilidad articular.",
+        "detalle": "Aporta calcio esencial para huesos fuertes y ayuda a mantener el buen funcionamiento de las articulaciones. Contribuye a la regeneración del tejido cartilaginoso. Modo de uso: Tomar 1 a 2 cápsulas al día.",
+        "imagen": "carti-calcio.jpg",
         "presentaciones": [
-            {"tamano": "", "precio": None},
-            {"tamano": "", "precio": None}
+            {"tamano": "120 cápsulas", "precio": None},
+            {"tamano": "60 cápsulas", "precio": None}
         ]
     },
     {
-        "id": "multivitaminico",
-        "nombre": "Multivitamínico",
-        "categoria": "Vitaminas y minerales",
-        "descripcion": "Una opción para complementar tu alimentación.",
-        "detalle": "Agregá aquí la información detallada del producto.",
-        "imagen": "",
+        "id": "Colageno-Vitamina-C",
+        "nombre": "Colágeno con Vitamina C",
+        "categoria": "Belleza y Piel",
+        "descripcion": "Fórmula 100% natural que mejora la elasticidad y firmeza de la piel, reduce arrugas y fortalece uñas y cabello.",
+        "detalle": "Contiene colágeno y Vitamina C extra para una piel más luminosa. Hidrata desde adentro, combate la flacidez y favorece la producción de colágeno natural. Modo de uso: Tomar 1 a 2 cápsulas al día.",
+        "imagen": "Colageno-Vitamina-C.jpg",
         "presentaciones": [
-            {"tamano": "", "precio": None},
-            {"tamano": "", "precio": None}
+            {"tamano": "120 cápsulas", "precio": None},
+            {"tamano": "60 cápsulas", "precio": None}
         ]
     }
+    ,
+        {
+        "id": "Colageno-Hidrolizado-Prof",
+        "nombre": "Colágeno Hidrolizado (CPure)",
+        "categoria": "Belleza y Piel",
+        "descripcion": "Complemento con Vitaminas A y C que apoya la salud de la piel, contribuye al cuidado del cabello y las uñas.",
+        "detalle": "Fórmula 0% Azúcar, Lactosa, Gluten y Sodio. Ideal para tu rutina de bienestar diario. Contiene 150 cápsulas.",
+        "imagen": "colageno-hidrolisado.jpg",
+        "presentaciones": [
+            {"tamano": "150 cápsulas", "precio": None}
+        ]
+    },
+        {
+        "id": "Colageno-Tipo2-Videira",
+        "nombre": "Colágeno Tipo 2 + Ácido Hialurónico (Videira7)",
+        "categoria": "Huesos y Articulaciones",
+        "descripcion": "Fórmula avanzada con MSM, Vitaminas C y D, y Calcio. Cuidado completo para tus articulaciones y piel.",
+        "detalle": "El Colágeno Tipo II no hidrolizado ayuda a mantener la estructura y función de las articulaciones. El Ácido Hialurónico auxilia en la hidratación y elasticidad de la piel. Modo de uso: Ingerir 2 cápsulas al día, preferentemente con las comidas.",
+        "imagen": "colageno-tipo-2.jpg",
+        "presentaciones": [
+            {"tamano": "60 cápsulas", "precio": None}
+        ]
+    },
+        {
+        "id": "Curcuma-Magnesio-Colageno",
+        "nombre": "Cúrcuma + Magnesio + Colágeno Tipo II",
+        "categoria": "Huesos y Articulaciones",
+        "descripcion": "Fórmula 100% natural que ayuda a disminuir la inflamación, aliviar el dolor articular y mejorar la movilidad.",
+        "detalle": "Contiene Cúrcuma (antiinflamatorio natural), Colágeno Tipo II (protege y regenera el cartílago) y Magnesio (apoya huesos, músculos y sistema nervioso). Sin gluten, sin TACC, 0% grasas trans. Modo de uso: 2 cápsulas al día.",
+        "imagen": "curcuma.jpg", 
+        "presentaciones": [
+            {"tamano": "120 cápsulas", "precio": None},
+            {"tamano": "100 cápsulas", "precio": None},
+            {"tamano": "60 cápsulas", "precio": None}
+        ]
+    },
+        {
+        "id": "Lipo-Xtreme",
+        "nombre": "Lipo Xtreme (Termogénico)",
+        "categoria": "Quema Grasa",
+        "descripcion": "Termogénico en cápsulas que aumenta la quema de grasa, reduce el apetito e incrementa la energía.",
+        "detalle": "Favorece la definición muscular y mejora el metabolismo. Contiene cafeína, té verde y aminoácidos. Modo de uso: Según indicación del entrenador o profesional.",
+        "imagen": "lipo-xtreme.jpg", 
+        "presentaciones": [
+            {"tamano": "60 cápsulas", "precio": None}
+        ]
+    },
+        {
+        "id": "Mio-Inositol",
+        "nombre": "Mio-Inositol + Cromo y Vitaminas",
+        "categoria": "Salud Hormonal",
+        "descripcion": "Fórmula avanzada que mejora la sensibilidad a la insulina, favorece el equilibrio hormonal y es útil en el SOP.",
+        "detalle": "Contiene Mio-Inositol, Picolinato de Cromo, Zinc y Vitaminas B1, B6, D3 y K2. Ayuda a regular los ciclos menstruales, controlar el peso y la glucosa, y apoya la salud mental y cardiovascular. Modo de uso: 2 cápsulas al día.",
+        "imagen": "MIO-INOSITOL.jpg", 
+        "presentaciones": [
+            {"tamano": "120 cápsulas", "precio": None},
+            {"tamano": "100 cápsulas", "precio": None},
+            {"tamano": "60 cápsulas", "precio": None}
+        ]
+    },
+        {
+        "id": "Saude-da-Mulher",
+        "nombre": "Saúde da Mulher (Salud de la Mujer)",
+        "categoria": "Salud Hormonal",
+        "descripcion": "Suplemento integral diseñado para acompañar a la mujer en cada etapa, brindando bienestar, equilibrio y energía.",
+        "detalle": "Ayuda a regular las hormonas y el ciclo menstrual. Fortalece el sistema inmunológico, aumenta la energía, contribuye a la salud ósea y muscular, y mejora la salud de la piel, cabello y uñas. Modo de uso: 2 cápsulas al día.",
+        "imagen": "Saude-da-Mulher.jpg", 
+        "presentaciones": [
+            {"tamano": "120 cápsulas", "precio": None},
+            {"tamano": "100 cápsulas", "precio": None},
+            {"tamano": "60 cápsulas", "precio": None}
+        ]
+    },
+            {
+        "id": "NutriDaily-B12",
+        "nombre": "NutriDaily Vitamina B12 (Masticable)",
+        "categoria": "Vitaminas y Minerales",
+        "descripcion": "Suplemento en comprimidos masticables sabor frutas rojas, con alto contenido de Vitamina B12 (Metilcobalamina). 100% Vegano.",
+        "detalle": "Aporta energía y vitalidad, reduce el cansancio y la fatiga. Favorece el funcionamiento del sistema nervioso e inmunológico, y contribuye a la formación de glóbulos rojos. Sin azúcares ni colorantes. Modo de uso: Tomar 1 comprimido masticable al día.",
+        "imagen": "NutriDaily-B12.jpg", 
+        "presentaciones": [
+            {"tamano": "60 comprimidos", "precio": None}
+        ]
+    },
+            
 ]
 
 WHATSAPP_NUMBER = "595981715613"
 
-
+N8N_WEBHOOK_URL = "https://n8n-service-1xpn.onrender.com/webhook/6e23d744-e828-4a90-981d-c91d6b4a537d"
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="es">
@@ -964,8 +1051,10 @@ HTML_TEMPLATE = """
     // PRODUCTOS RECIBIDOS DESDE PYTHON
 
     const productos = {{ productos | tojson }};
+    
     const WHATSAPP_NUMBER = {{ WHATSAPP_NUMBER | tojson }};
-    const WHATSAPP_CONFIGURADO = {{ WHATSAPP_CONFIGURADO | tojson }};
+    const WHATSAPP_CONFIGURADO = true;
+
     let productoActual = null;
     let carrito = [];
 
@@ -1432,12 +1521,17 @@ HTML_TEMPLATE = """
         const mensaje =
             "Hola, necesito orientación sobre los productos de SUPLEMENTEX.";
 
-        const url = "https://wa.me/" + WHATSAPP_NUMBER +
+            const url = "https://wa.me/" + WHATSAPP_NUMBER +
             "?text=" + encodeURIComponent(mensaje);
 
-        window.open(url, "_blank", "noopener,noreferrer");
+            const ventana = window.open(url, "_blank");
 
-    }
+            if (!ventana) {
+            alert("El navegador bloqueó la ventana. Permití las ventanas emergentes.");
+            }
+        }
+
+    
 
 
     // CERRAR MODAL AL HACER CLIC FUERA
@@ -1460,13 +1554,11 @@ HTML_TEMPLATE = """
 </body>
 </html>
 """
-
-
 @app.route("/")
 def home():
-
+    
     numero_configurado = (
-        WHATSAPP_NUMBER != "595XXXXXXXXX"
+        WHATSAPP_NUMBER =="595981715613"
         and WHATSAPP_NUMBER.isdigit()
     )
 
@@ -1480,6 +1572,8 @@ def home():
 
 if __name__ == "__main__":
 
-    print("SUPLEMENTEX disponible en http://127.0.0.1:5000")
+    print("SUPLEMENTEX disponible en https://suplementex.onrender.com/")
 
     app.run(debug=True, port=5000)
+    
+    
