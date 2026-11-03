@@ -837,7 +837,7 @@ HTML_TEMPLATE = """
             </div>
                 <div class="hero-imagen-wrapper">
                <img
-              src="{{ url_for('static', filename='bannersuplementex.jpg'') }}"
+              src="{{ url_for('static', filename='bannersuplementex.jpg') }}"
              alt="Portada de SUPLEMENTEX"
              class="imagen-banner"
                 >
