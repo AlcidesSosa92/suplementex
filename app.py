@@ -12,6 +12,17 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # ============================================================
 
 PRODUCTOS = [{
+        "id": "ENA-Whey-Protein-TrueMade",
+        "nombre": "ENA Whey Protein TrueMade (Vainilla)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína de alto valor biológico (mezcla de Isolado + Concentrado) diseñada para aumentar la fuerza, el músculo y el rendimiento.",
+        "detalle": "Aporta 25g de proteína y 6g de BCAA por porción. Contribuye al crecimiento y mantenimiento de la masa muscular, y a una rápida recuperación post-entreno. Apoya el sistema inmunológico. Sabor: Vainilla Ice Cream. Bajo en grasas y azúcares, sin gluten y libre de TACC. Proveedor oficial de la Unión Argentina de Rugby (UAR). Modo de uso: Mezclar 1 porción (según indicación) con agua o leche.",
+        "imagen": "ENA-Whey-Protein-TrueMade.jpg",
+        "presentaciones": [
+            {"tamano": "2,05 LB (930 g) - 30 Servicios", "precio": None}
+        ]
+       },
+        {
         "id": "Creatina-Body-Advance",
         "nombre": "Creatina Monohidrato Micronizada (Body Advance)",
         "categoria": "Creatinas",
