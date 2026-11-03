@@ -12,6 +12,17 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # ============================================================
 
 PRODUCTOS = [{
+        "id": "Creatina-Body-Advance",
+        "nombre": "Creatina Monohidrato Micronizada (Body Advance)",
+        "categoria": "Creatinas",
+        "descripcion": "Suplemento dietario a base de Creatina Monohidratada en polvo. Fórmula micronizada de alta pureza para máxima fuerza y mejores resultados.",
+        "detalle": "Beneficios clave: Aumenta la fuerza y potencia en entrenamientos de alta intensidad. Mejora el rendimiento físico en series cortas y explosivas. Contribuye a una recuperación más rápida y favorece el aumento de masa muscular magra. Sin azúcar ni colorantes artificiales. Modo de uso: Mezclar 1 medida (aprox. 5 g) con 200-300 ml de agua o bebida favorita. Consumir antes o después del entrenamiento. Contiene 60 servicios.",
+        "imagen": "Creatina-Body-Advance.jpg",
+        "presentaciones": [
+            {"tamano": "300 g", "precio": None}
+        ]
+    },
+        {
         "id": "Whey-Cutter-SPX",
         "nombre": "Whey Cutter (SPX Nutrition)",
         "categoria": "Proteínas",
