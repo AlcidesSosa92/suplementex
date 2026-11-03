@@ -12,6 +12,39 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # ============================================================
 
 PRODUCTOS = [{
+        "id": "Whey-Protein-Growth",
+        "nombre": "Whey Protein True Mix Isolate (+growth)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína de suero de leche de alta calidad (mezcla de aislado y concentrado) que garantiza fuerza real y resultados reales. Sabor chocolate extra flavor.",
+        "detalle": "Fórmula con alto contenido de proteínas por porción y fuente natural de BCAA. Beneficios: Favorece el desarrollo muscular, recuperación avanzada (reduce fatiga y dolor), aporta energía, es fácil de digerir y tiene bajo en azúcar (Sugar Free). Sin azúcar añadida. Materia prima importada de USA. Ideal para musculación, definición o mantenimiento. Modo de uso: Mezclar 1 scoop (aprox. 30 g) con 200-250 ml de agua o leche fría. Consumir 1 o 2 veces al día, preferentemente después de entrenar.",
+        "imagen": "Whey-Protein-Growth.jpg",
+        "presentaciones": [
+            {"tamano": "Sabor Chocolate Extra Flavor", "precio": None}
+        ]
+    },
+    {
+        "id": "Colageno-Creatina-Natural-Suppy",
+        "nombre": "Colágeno + Creatina (Natural Suppy) - Sabor Frutilla",
+        "categoria": "Creatinas",
+        "descripcion": "Fórmula 2 en 1 que combina la fuerza de la creatina con los beneficios del colágeno. Ideal para apoyar el rendimiento deportivo y el cuidado integral del cuerpo.",
+        "detalle": "Contenido neto: 250 gramos. Beneficios: Salud articular (apoya articulaciones, tendones y ligamentos), cuidado de piel, cabello y uñas, recuperación muscular post-ejercicio, y desarrollo de fuerza y músculo. Ideal para personas que entrenan, realizan actividad física o buscan complementar su nutrición diaria. Sabor: Frutilla.",
+        "imagen": "Colageno-Creatina-Natural-Suppy.jpg",
+        "presentaciones": [
+            {"tamano": "250 g (Sabor Frutilla)", "precio": None}
+        ]
+    },
+    {
+        "id": "Creatina-Gummy-Ekobe",
+        "nombre": "Creatina en Gomas Ekobé (Chocolate Belga)",
+        "categoria": "Creatinas",
+        "descripcion": "La creatina más deliciosa y práctica. Gomitas sabor chocolate belga que ayudan a mejorar el rendimiento físico, la fuerza y la resistencia muscular.",
+        "detalle": "Aporta 3g de creatina por porción. Beneficios: Aumenta la fuerza y potencia, mejora el rendimiento y la resistencia, favorece la recuperación muscular y aporta energía para tus entrenamientos. Fácil de consumir, cero azúcar y sin gluten. Contiene 60 gomas (Edición Limitada Falcão 12). Modo de uso: Consumir según la porción indicada al día.",
+        "imagen": "Creatina-Gummy-Ekobe.jpg",
+        "presentaciones": [
+            {"tamano": "60 gomas (Sabor Chocolate Belga)", "precio": None}
+        ]
+    },
+        {
         "id": "ENA-Creatina-Colageno",
         "nombre": "Creatina + Colágeno (ENA)",
         "categoria": "Creatinas",
