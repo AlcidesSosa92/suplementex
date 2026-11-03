@@ -11,7 +11,51 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # Completá los tamaños y precios cuando tengas la información.
 # ============================================================
 
-PRODUCTOS = [{
+PRODUCTOS = [ {
+        "id": "MuscleStar-Second-Shift",
+        "nombre": "MuscleStar Second Shift (Star Nutrition) - Vainilla",
+        "categoria": "Proteínas",
+        "descripcion": "La proteína que trabaja tan duro como tú. Fórmula post-entreno con electrolitos, diseñada para la recuperación y el crecimiento muscular después de entrenamientos intensos.",
+        "detalle": "Aporta 35g de proteína por servicio (fórmula concentrada, hidrolizada y aislada de suero lácteo). Beneficios: Recuperación muscular rápida, aumento de fuerza y rendimiento, hidratación con electrolitos, apoyo al sistema inmunológico y crecimiento de masa muscular magra. Sin azúcar añadida y baja en grasas. Sabor: Vanilla Ice Cream. Modo de uso: Consumir post-entrenamiento.",
+        "imagen": "MuscleStar-Second-Shift.jpg",
+        "presentaciones": [
+            {"tamano": "2 LB (907 g) - 30 Servicios", "precio": None}
+        ]
+    },
+    {
+        "id": "Creatina-Swork",
+        "nombre": "Creatina Monohidrato (Swork Nutrition) - 250g",
+        "categoria": "Creatinas",
+        "descripcion": "Creatina monohidratada de calidad premium (micronizada) para potenciar tu fuerza, rendimiento y masa muscular.",
+        "detalle": "Contenido neto: 250g (50 servicios aprox.). Beneficios: Aumenta la fuerza y potencia muscular, mejora el rendimiento en entrenamientos de alta intensidad y favorece el aumento de masa muscular magra. Producto SIN TACC, sin gluten, bajo en grasas y cero grasas trans. Modo de uso: Mezclar 1 medida (5g) con agua o jugo, preferentemente antes o después del entrenamiento.",
+        "imagen": "Creatina-Swork-250g.jpg",
+        "presentaciones": [
+            {"tamano": "250 g (50 servicios)", "precio": None}
+        ]
+    }, 
+        {
+        "id": "Whey-Protein-Swork",
+        "nombre": "Whey Proteín (Swork Nutrition) - Sabor Vainilla",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína de suero de alta calidad (Calidad Premium) que favorece el crecimiento y reparación muscular. Sabor Vainilla, libre de gluten.",
+        "detalle": "Por porción (según dosificación): 24g de Proteína, 13g de BCAA y 0g de Azúcares. Beneficios: Favorece el crecimiento y reparación muscular, ayuda a recuperar los músculos después del entrenamiento y aporta proteína de alta calidad para una mejor definición y rendimiento. Sin TACC, sin gluten, bajo en grasas y cero grasas trans. Modo de uso: Mezclar 1 porción con agua o leche.",
+        "imagen": "Whey-Protein-Swork.jpg",
+        "presentaciones": [
+            {"tamano": "908 g (2 LBS) - Sabor Vainilla", "precio": None}
+        ]
+    },  
+    {
+        "id": "Whey-Ripped-Extreme-Racers",
+        "nombre": "Whey Ripped Extreme (Racers Labs)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína avanzada para resultados extremos. Formulada para apoyar el crecimiento muscular, la recuperación y la definición corporal. Sabor Frutilla.",
+        "detalle": "Cada porción (33g) aporta: 24g de Proteínas, 0g de Grasas Trans, 280mg de L-Carnitina y 210mg de Garcinia Cambogia. Beneficios: Desarrollo muscular, mejora del rendimiento, apoya la definición (ayuda a quemar grasa), recuperación rápida y fórmula completa con vitaminas y minerales. Endulzado con Stevia. Modo de uso: Mezclar 1 porción (33g) con 200-250 ml de agua o leche. Tomar 1 a 2 veces al día, después de entrenar o entre comidas.",
+        "imagen": "Whey-Ripped-Extreme-Racers.jpg",
+        "presentaciones": [
+            {"tamano": "1 kg (2.2 LB) - Sabor Frutilla", "precio": None}
+        ]
+    },
+        {
         "id": "Whey-Protein-Growth",
         "nombre": "Whey Protein True Mix Isolate (+growth)",
         "categoria": "Proteínas",
