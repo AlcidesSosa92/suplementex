@@ -842,11 +842,13 @@ HTML_TEMPLATE = """
                     <span>MONOHYDRATE</span>
                 </div>
 
-                <div class="tarro" style="height:220px">
-                    <strong>WHEY</strong>
-                    <span>PROTEIN</span>
-                    <small>SUPLEMENTEX</small>
-                </div>
+                <div class="hero-imagen-wrapper">
+               <img
+              src="{{ url_for('static', filename='banner.jpg') }}"
+             alt="Portada de SUPLEMENTEX"
+             class="imagen-banner"
+                >
+            </div>
             </div>
 
         </div>
