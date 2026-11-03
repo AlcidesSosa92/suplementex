@@ -12,6 +12,18 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # ============================================================
 
 PRODUCTOS = [{
+        "id": "Whey-Pro-Nutrilab",
+        "nombre": "Whey Pro (Nutrilab Supplements)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína en polvo de alta calidad con fórmula Gourmet, ideal para el soporte muscular y la recuperación después del entrenamiento.",
+        "detalle": "Aporta 40g de proteína por porción, 5.5g de BCAA y 4.5g de Glutamina. Contiene EAA y NEAA para un soporte completo. Fácil de mezclar con agua o leche. Modo de uso: Consumir 1 porción al día, preferentemente post-entrenamiento.",
+        "imagen": "Whey-Pro-Nutrilab.jpg",
+        "presentaciones": [
+            {"tamano": "1 kg", "precio": None}, 
+            {"tamano": "2 kg", "precio": None}
+        ]
+       },
+        {
         "id": "Nervomax",
         "nombre": "Nervomax capsulas",
         "categoria": "Energía y Rendimiento",
