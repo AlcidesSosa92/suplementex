@@ -939,7 +939,7 @@ HTML_TEMPLATE = """
 
                         {% if producto.imagen %}
                         <img
-                            src="{{ url_for('static', filename='bannersuplementex.jpg') }}""
+                            src="{{ url_for('static', filename='bannersuplementex.jpg')}}""
                             alt="{{ producto.nombre }}"
                             loading="lazy"
                         >
