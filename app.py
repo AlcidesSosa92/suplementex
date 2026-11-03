@@ -835,16 +835,9 @@ HTML_TEMPLATE = """
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
-
-            <div class="ilustracion">
-                <div class="tarro">
-                    <strong>CREATINE</strong>
-                    <span>MONOHYDRATE</span>
-                </div>
-
                 <div class="hero-imagen-wrapper">
                <img
-              src="{{ url_for('static', filename='banner.jpg') }}"
+              src="{{ url_for('static', filename='bannersuplementex.jpg'') }}"
              alt="Portada de SUPLEMENTEX"
              class="imagen-banner"
                 >
@@ -946,7 +939,7 @@ HTML_TEMPLATE = """
 
                         {% if producto.imagen %}
                         <img
-                            src="{{ url_for('static', filename=producto.imagen) }}"
+                            src="{{ url_for('static', filename='bannersuplementex.jpg') }}""
                             alt="{{ producto.nombre }}"
                             loading="lazy"
                         >
