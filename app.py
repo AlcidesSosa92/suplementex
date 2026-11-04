@@ -11,7 +11,39 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # Completá los tamaños y precios cuando tengas la información.
 # ============================================================
 
-PRODUCTOS = [ {
+PRODUCTOS = ["id": "Creatina-Macrophytus",
+        "nombre": "Creatina Monohidratada (Macrophytus) - 300g",
+        "categoria": "Creatinas",
+        "descripcion": "Creatina monohidratada 100% pura, sin sabor y sin aditivos. La opción más limpia para aumentar tu fuerza, energía y masa muscular.",
+        "detalle": "Contenido neto: 300g. Beneficios: Aumenta la fuerza muscular para rendir más en tus entrenamientos, favorece el rendimiento físico y mental, y potencia el crecimiento y la recuperación muscular. Sin gluten, sin aditivos, sin sodio y cero azúcar. Modo de uso: Mezclar 1 medida (5g) con agua o tu bebida favorita.",
+        "imagen": "Creatina-Macrophytus.jpg",
+        "presentaciones": [
+            {"tamano": "300 g", "precio": None}
+        ]
+    },  
+        {
+        "id": "Bold-Buns-Creatine-Boost-celulitis",
+        "nombre": "Bold Buns Creatine Boost (Línea Femenina)",
+        "categoria": "Creatinas",
+        "descripcion": "Fórmula exclusiva para mujeres: Más músculo, menos celulitis. Combina creatina para el rendimiento con colágeno para una piel más firme y elástica. Sabor Frutilla.",
+        "detalle": "Por porción: 1g de BCAA (recuperación y rendimiento), 2.5g de Colágeno en péptidos (piel más firme y elástica), 5g de Creatina (más fuerza y masa muscular) y 1g de L-Glutamina (apoya la recuperación y el sistema inmune). Ayuda a reducir la celulitis, aporta más energía y resistencia. Contiene 30 servicios. Modo de uso: Mezclar 1 porción con agua, preferentemente después del entrenamiento.",
+        "imagen": "Bold-Buns-Creatine-Boost-celulitis.jpg",
+        "presentaciones": [
+            {"tamano": "30 Servicios - Sabor Frutilla", "precio": None}
+        ]
+    },
+        {
+        "id": "Bold-Buns-Creatine-Boost",
+        "nombre": "Bold Buns Creatine Boost (Línea Femenina)",
+        "categoria": "Creatinas",
+        "descripcion": "Fórmula exclusiva para mujeres: Más músculo, menos celulitis. Combina creatina para el rendimiento con colágeno para una piel más firme y elástica. Sabor Frutilla.",
+        "detalle": "Por porción: 1g de BCAA (recuperación y rendimiento), 2.5g de Colágeno en péptidos (piel más firme y elástica), 5g de Creatina (más fuerza y masa muscular) y 1g de L-Glutamina (apoya la recuperación y el sistema inmune). Contiene 30 servicios. Modo de uso: Mezclar 1 porción con agua, preferentemente después del entrenamiento.",
+        "imagen": "Bold-Buns-Creatine-Boost.jpg",
+        "presentaciones": [
+            {"tamano": "30 Servicios - Sabor Frutilla", "precio": None}
+        ]
+    },
+        {
         "id": "MuscleStar-Second-Shift",
         "nombre": "MuscleStar Second Shift (Star Nutrition) - Vainilla",
         "categoria": "Proteínas",
