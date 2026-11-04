@@ -23,7 +23,7 @@ PRODUCTOS = [{"id": "Creatina-Macrophytus",
     },  
         {
         "id": "Bold-Buns-Creatine-Boost-celulitis",
-        "nombre": "Bold Buns Creatine Boost (Línea Femenina)",
+        "nombre": "Bold Buns Creatine Boost-celulitis(Línea Femenina)",
         "categoria": "Creatinas",
         "descripcion": "Fórmula exclusiva para mujeres: Más músculo, menos celulitis. Combina creatina para el rendimiento con colágeno para una piel más firme y elástica. Sabor Frutilla.",
         "detalle": "Por porción: 1g de BCAA (recuperación y rendimiento), 2.5g de Colágeno en péptidos (piel más firme y elástica), 5g de Creatina (más fuerza y masa muscular) y 1g de L-Glutamina (apoya la recuperación y el sistema inmune). Ayuda a reducir la celulitis, aporta más energía y resistencia. Contiene 30 servicios. Modo de uso: Mezclar 1 porción con agua, preferentemente después del entrenamiento.",
