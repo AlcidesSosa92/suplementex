@@ -11,7 +11,7 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # Completá los tamaños y precios cuando tengas la información.
 # ============================================================
 
-PRODUCTOS = ["id": "Creatina-Macrophytus",
+PRODUCTOS = [{"id": "Creatina-Macrophytus",
         "nombre": "Creatina Monohidratada (Macrophytus) - 300g",
         "categoria": "Creatinas",
         "descripcion": "Creatina monohidratada 100% pura, sin sabor y sin aditivos. La opción más limpia para aumentar tu fuerza, energía y masa muscular.",
