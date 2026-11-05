@@ -12,6 +12,50 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # ============================================================
 
 PRODUCTOS = [{
+        "id": "Creatina-Monohidratada-Pura",
+        "nombre": "Creatina Monohidratada 100% Pura (Sabor Neutro)",
+        "categoria": "Creatinas",
+        "descripcion": "Creatina monohidratada de alta calidad en polvo, 100% pura y sabor neutro. Lleva tu entrenamiento al siguiente nivel aumentando tu energía, fuerza y rendimiento.",
+        "detalle": "Peso líquido: 300g. Beneficios: Aumenta la fuerza y la masa muscular, mejora el rendimiento físico y la resistencia, favorece la concentración y la memoria, ayuda en la recuperación muscular después del entrenamiento e incrementa la producción de energía en las células musculares. Ideal para deportistas, fitness y personas activas. Modo de uso: Mezclar 1 medida (5g) con agua o tu bebida favorita.",
+        "imagen": "Creatina-Monohidratada-Pura.jpg",
+        "presentaciones": [
+            {"tamano": "300 g (Sabor Neutro)", "precio": None}
+        ]
+    },  
+        {
+        "id": "Testrol-Up-Next-Level",
+        "nombre": "Testrol Up Next Level (Profit Laboratorios)",
+        "categoria": "Salud Masculina",
+        "descripcion": "Fórmula superior diseñada para apoyar la energía, la fuerza y el rendimiento físico y mental. Tu mejor versión cada día.",
+        "detalle": "Super concentrado en tabletas. Ciclo de 30 días (90 tabletas). Principales componentes: 450mg de Fenogreco (energía y testosterona), 500mg de Taurina (rendimiento y resistencia), 8.86mg de Boro (equilibrio hormonal y salud ósea) y 52.8mg de L-Citrulina/Arginina (circulación, oxigenación y rendimiento). Beneficios: Aumenta la energía, favorece la masa muscular, apoya la producción natural de testosterona, mejora la concentración y fortalece el sistema inmunológico.",
+        "imagen": "Testrol-Up-Next-Level.jpg",
+        "presentaciones": [
+            {"tamano": "90 Tabletas - Ciclo de 30 días", "precio": None}
+        ]
+    },
+    {
+        "id": "Vit-C-Zinco-Profit",
+        "nombre": "Vit-C + Zinco (Profit Laboratorios)",
+        "categoria": "Vitaminas y Minerales",
+        "descripcion": "La combinación perfecta de Vitamina C y Zinc para fortalecer tus defensas, aumentar la energía y proteger tus células del daño oxidativo.",
+        "detalle": "Contiene 60 cápsulas. Cada porción aporta 1000mg de Ácido Ascórbico (Vitamina C) y 11mg de Zinc. Beneficios: Fortalece el sistema inmunológico, acción antioxidante, aumenta la energía y disminuye el cansancio, cuida la piel (favorece la producción de colágeno) y contribuye a la salud de huesos, músculos y articulaciones. Fácil de tomar.",
+        "imagen": "Vit-C-Zinco-Profit.jpg",
+        "presentaciones": [
+            {"tamano": "60 Cápsulas", "precio": None}
+        ]
+    }, 
+        {
+        "id": "Joint-Pro-Colageno-Tipo2",
+        "nombre": "Joint Pro - Colágeno Tipo 2 (Profit)",
+        "categoria": "Huesos y Articulaciones",
+        "descripcion": "Fórmula avanzada con 40mg de Colágeno Tipo 2 y 6 Vitaminas para proteger tus articulaciones, mejorar la movilidad y fortalecer huesos, cabello y uñas.",
+        "detalle": "Contiene 60 cápsulas (Peso líquido: 27g). Beneficios: Protege las articulaciones y disminuye el desgaste articular, mejora la flexibilidad y libertad de movimiento, fortalece los huesos, reduce la inflamación y alivia molestias articulares. El colágeno tipo 2 también aporta a la salud y elasticidad de la piel. Fórmula 0% Lactosa, Gluten, Azúcar y Gordura. Contiene Vitaminas A, C, D, E, B1 y B6. Modo de uso: Consumir según indicación profesional.",
+        "imagen": "Joint-Pro-Colageno-Tipo2.jpg",
+        "presentaciones": [
+            {"tamano": "60 Cápsulas", "precio": None}
+        ]
+    },
+        {
         "id": "Whey-Protein-My-Nutrition",
         "nombre": "Whey Protein (My Nutrition) - Sabor Vainilla Caramel",
         "categoria": "Proteínas",
