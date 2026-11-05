@@ -11,7 +11,51 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # Completá los tamaños y precios cuando tengas la información.
 # ============================================================
 
-PRODUCTOS = [{"id": "Creatina-Macrophytus",
+PRODUCTOS = [{
+        "id": "Whey-Protein-My-Nutrition",
+        "nombre": "Whey Protein (My Nutrition) - Sabor Vainilla Caramel",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína 100% de suero de alta calidad (Calidad Premium) con absorción rápida. Baja en carbohidratos y enriquecida con aminoácidos esenciales. Sabor Vainilla Caramel.",
+        "detalle": "Presentación: 1 kg (2.2 Lb) - Rinde 25 servicios (porción de 40g). Perfil nutricional por servicio: 30g de Proteína, 6748 mg de BCAA, 5050 mg de Glutamina, 14154 mg de EAA (Aminoácidos Esenciales) y 15846 mg de NEAA. Beneficios: Aumenta y conserva la masa muscular, mejora la recuperación post-entrenamiento, es de fácil digestión y aporta aminoácidos esenciales. Sin azúcar añadida, sin gluten, bajo en grasas y cero grasas trans. Modo de uso: Mezclar 1 medida (40g) con 200-250 ml de agua o leche. Consumir 1-2 veces al día.",
+        "imagen": "Whey-Protein-My-Nutrition.jpg",
+        "presentaciones": [
+            {"tamano": "1 kg (2.2 LB) - 25 Servicios - Sabor Vainilla Caramel", "precio": None}
+        ]
+    },
+    {
+        "id": "Premium-Whey-New-Made",
+        "nombre": "Premium Whey (New Made) - Sabor Vainilla",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína de suero de alta calidad (Made in USA) que aumenta la masa muscular, mejora el rendimiento y fortalece el sistema inmunológico. Sabor Vainilla.",
+        "detalle": "Presentación de 1 kg (2.2 Lb) - Rinde 25 servicios. Cada servicio (1 porción) aporta 30g de Proteína y 1,67g de BCAA. Beneficios: Aumenta la masa muscular, da energía y resistencia para entrenar mejor, fortalece el sistema inmunológico (rico en vitaminas y minerales), cuida huesos y articulaciones, y apoya la recuperación muscular. Ideal para hombres y mujeres. Modo de uso: Mezclar 1 porción con agua o leche.",
+        "imagen": "Premium-Whey-New-Made.jpg",
+        "presentaciones": [
+            {"tamano": "1 kg (2.2 LB) - 25 Servicios - Sabor Vainilla", "precio": None}
+        ]
+    }, 
+        {
+        "id": "Cuts-Powder",
+        "nombre": "Cuts Powder (Quema Grasa y Nootrópico)",
+        "categoria": "Quema Grasa",
+        "descripcion": "Tu aliado en el entrenamiento. Fórmula avanzada en polvo que acelera el metabolismo, aumenta la energía y mejora el enfoque mental y el rendimiento.",
+        "detalle": "Fórmula Metabólica, Nootrópica, Diurética y Estimulante. Beneficios: Ayuda a acelerar el metabolismo y favorece la pérdida de grasa corporal. Aumenta la energía y la resistencia. Mejora el enfoque, la concentración y la función cognitiva. Apoya la función tiroidea estimulando el metabolismo. Potencia la resistencia y la fuerza. Sin azúcar (según formulación). Presentación: 383g. Rinde varios días de uso. Modo de uso: Mezclar 1 medida con agua, ideal antes del entrenamiento.",
+        "imagen": "Cuts-Powder.jpg",
+        "presentaciones": [
+            {"tamano": "383 g", "precio": None}
+        ]
+    },
+    {
+        "id": "L-Arginine-GH-Star",
+        "nombre": "L-Arginine GH (Star Nutrition) - 150g",
+        "categoria": "Aminoácidos",
+        "descripcion": "L-Arginina 100% pura en polvo. Fórmula de alto rendimiento diseñada para aumentar la energía, la resistencia y mejorar el flujo sanguíneo.",
+        "detalle": "Contiene 38 aminoácidos. Beneficios: Aumenta la energía y la resistencia, favorece el rendimiento físico y mental, mejora la circulación sanguínea y apoya la producción de óxido nítrico (ideal para la congestión muscular). Sin gluten y sin T.A.C.C. (Sin TACC). Presentación: 150 gramos (rinde 39 servicios). Modo de uso: Mezclar 1 servicio con agua o bebida favorita.",
+        "imagen": "L-Arginine-GH-Star.jpg",
+        "presentaciones": [
+            {"tamano": "150 g - 39 Servicios", "precio": None}
+        ]
+    },
+        {"id": "Creatina-Macrophytus",
         "nombre": "Creatina Monohidratada (Macrophytus) - 300g",
         "categoria": "Creatinas",
         "descripcion": "Creatina monohidratada 100% pura, sin sabor y sin aditivos. La opción más limpia para aumentar tu fuerza, energía y masa muscular.",
