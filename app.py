@@ -9,9 +9,8 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # ============================================================
 # CATALOGO DE PRODUCTOS
 # Completá los tamaños y precios cuando tengas la información.
-# ============================================================
-
-PRODUCTOS = [{
+# ============================================================ 
+PRODUCTOS = [  {
         "id": "Creatina-Monohidratada-Pura",
         "nombre": "Creatina Monohidratada 100% Pura (Sabor Neutro)",
         "categoria": "Creatinas",
@@ -55,7 +54,7 @@ PRODUCTOS = [{
             {"tamano": "60 Cápsulas", "precio": None}
         ]
     },
-        {
+    {
         "id": "Whey-Protein-My-Nutrition",
         "nombre": "Whey Protein (My Nutrition) - Sabor Vainilla Caramel",
         "categoria": "Proteínas",
@@ -99,7 +98,8 @@ PRODUCTOS = [{
             {"tamano": "150 g - 39 Servicios", "precio": None}
         ]
     },
-        {"id": "Creatina-Macrophytus",
+        {
+        "id": "Creatina-Macrophytus",
         "nombre": "Creatina Monohidratada (Macrophytus) - 300g",
         "categoria": "Creatinas",
         "descripcion": "Creatina monohidratada 100% pura, sin sabor y sin aditivos. La opción más limpia para aumentar tu fuerza, energía y masa muscular.",
@@ -131,6 +131,30 @@ PRODUCTOS = [{
             {"tamano": "30 Servicios - Sabor Frutilla", "precio": None}
         ]
     },
+    {
+        "id": "FitWhey-Protein-Generation-Fit",
+        "nombre": "FitWhey Protein (Generation Fit) - The Aesthetic Protein",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína de alta calidad (Aislado + Hidrolizado + Concentrado) diseñada para apoyar el crecimiento muscular, acelerar la recuperación y complementar una alimentación balanceada. Keto Friendly.",
+        "detalle": "Por porción (30g): 24g de Proteínas, 2g de Carbohidratos, 1.5g de Grasas totales, 110 kcal. Beneficios: Aumenta y mantiene la masa muscular, favorece la recuperación post-entreno, mejora el rendimiento físico y es de fácil digestión. Sin azúcar añadida, con BCAA's naturales y fácil disolución. Disponible en 2 sabores gourmet: Maracuyá Cheesecake y Super Cookies and Cream. Contiene 30 servicios por envase.",
+        "imagen": "FitWhey-Protein-Generation-Fit.jpg",
+        "presentaciones": [
+            {"tamano": "Sabor Maracuyá Cheesecake - 30 Servicios", "precio": None},
+            {"tamano": "Sabor Super Cookies and Cream - 30 Servicios", "precio": None}
+        ]
+    },
+        {
+        "id": "Mega-Max-SPX",
+        "nombre": "Mega Max (SPX Nutrition) - Ganador de Peso",
+        "categoria": "Ganadores de Peso",
+        "descripcion": "El batido de tus sueños. Suplemento nutricional completo formulado para aumentar la masa muscular, aportar energía duradera y acelerar la recuperación.",
+        "detalle": "Fórmula avanzada: Proteína de alta calidad, BCAA, Creatina, Carbohidratos complejos, Vitaminas y minerales. Beneficios: Aumenta la masa muscular, aporta energía duradera, mejora la recuperación, y da más fuerza y resistencia. Presentación: 2400g (5.3 LBS) - 60 servicios de 40g. Modo de uso: Mezclar 1 medida (40g) con 250-300 ml de agua o leche. Tomar 1 a 2 veces al día (después de entrenar o entre comidas).",
+        "imagen": "Mega-Max-SPX.jpg",
+        "presentaciones": [
+            {"tamano": "2400g (5.3 LBS) - Sabor Cookies & Cream", "precio": None},
+            {"tamano": "2400g (5.3 LBS) - Sabor Frutilla", "precio": None}
+        ]
+    }, 
         {
         "id": "MuscleStar-Second-Shift",
         "nombre": "MuscleStar Second Shift (Star Nutrition) - Vainilla",
@@ -175,7 +199,7 @@ PRODUCTOS = [{
             {"tamano": "1 kg (2.2 LB) - Sabor Frutilla", "precio": None}
         ]
     },
-        {
+    {
         "id": "Whey-Protein-Growth",
         "nombre": "Whey Protein True Mix Isolate (+growth)",
         "categoria": "Proteínas",
@@ -208,7 +232,18 @@ PRODUCTOS = [{
             {"tamano": "60 gomas (Sabor Chocolate Belga)", "precio": None}
         ]
     },
-        {
+    {
+        "id": "Creatina-Gummy",
+        "nombre": "Creatina Gummy (Sabor Uva Verde)",
+        "categoria": "Creatinas",
+        "descripcion": "La forma más práctica y deliciosa de tomar creatina. Gomitas sabor a uva verde que aportan fuerza, energía y rendimiento en cada porción.",
+        "detalle": "Contiene 30 gomitas (3G de creatina por porción). Beneficios: Aumenta la fuerza y el rendimiento en entrenamientos de alta intensidad, reduce la fatiga, mejora la función cognitiva (concentración y memoria) y apoya el desarrollo muscular. Práctica y deliciosa, sin gluten y sin azúcar. Modo de uso: Tomar 3 gomitas al día o según orientación de un profesional.",
+        "imagen": "Creatina-Gummy.jpg",
+        "presentaciones": [
+            {"tamano": "30 gomitas (Sabor Uva Verde)", "precio": None}
+        ]
+    },
+    {
         "id": "ENA-Creatina-Colageno",
         "nombre": "Creatina + Colágeno (ENA)",
         "categoria": "Creatinas",
@@ -230,7 +265,7 @@ PRODUCTOS = [{
             {"tamano": "900 g (Sabor Vainilla)", "precio": None}
         ]
        }, 
-      {
+    {
         "id": "ENA-Ultra-Mass",
         "nombre": "ENA Ultra Mass (Vanilla Ice Cream)",
         "categoria": "Ganadores de Peso",
@@ -241,7 +276,7 @@ PRODUCTOS = [{
             {"tamano": "1,5 kg (1500 g) - Sabor Vainilla", "precio": None}
         ]
     },
-        {
+    {
         "id": "ENA-Whey-Protein-TrueMade",
         "nombre": "ENA Whey Protein TrueMade (Vainilla)",
         "categoria": "Proteínas",
@@ -251,7 +286,8 @@ PRODUCTOS = [{
         "presentaciones": [
             {"tamano": "2,05 LB (930 g) - 30 Servicios", "precio": None}
         ]
-    },{
+    },
+    {
         "id": "Creatina-Body-Advance",
         "nombre": "Creatina Monohidrato Micronizada (Body Advance)",
         "categoria": "Creatinas",
@@ -584,21 +620,24 @@ HTML_TEMPLATE = """
             font-weight: 900;
         }
 
-        .hero {
-            padding: 75px 0;
-            background:
-                radial-gradient(circle at 80% 30%,
-                rgba(0,207,255,.15), transparent 40%),
-                radial-gradient(circle at 20% 80%,
-                rgba(255,105,0,.15), transparent 40%);
-        }
+    .hero {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            background-image: url("/imagenes/suplementex.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            }
 
         .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 45px;
-            align-items: center;
-        }
+                width: 100%;
+                min-height: 600px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
         .etiqueta {
             color: var(--azul);
@@ -1063,19 +1102,6 @@ HTML_TEMPLATE = """
                     Ver productos
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
-            </div>
-
-            <div class="ilustracion">
-                <div class="tarro">
-                    <strong>CREATINE</strong>
-                    <span>MONOHYDRATE</span>
-                </div>
-
-                <div class="tarro" style="height:220px">
-                    <strong>WHEY</strong>
-                    <span>PROTEIN</span>
-                    <small>SUPLEMENTEX</small>
-                </div>
             </div>
 
         </div>
