@@ -619,25 +619,37 @@ HTML_TEMPLATE = """
             font-size: 12px;
             font-weight: 900;
         }
-
-    .hero {
+        .hero {
             position: relative;
             width: 100%;
-            min-height: 600px;
-            background-image: url("/imagenes/suplementex.jpg");
+            min-height: 650px;
+            /* Esto pone un filtro oscuro sobre la foto para que el texto resalte */
+            background-image: linear-gradient(to right, rgba(5, 8, 16, 0.95) 0%, rgba(5, 8, 16, 0.75) 50%, rgba(5, 8, 16, 0.4) 100%), url("/imagenes/suplementex.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            display: flex;
+            align-items: center; 
             overflow: hidden;
-            }
+        }
 
         .hero-grid {
-                width: 100%;
-                min-height: 600px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Alinea el texto a la izquierda para no tapar a las personas */
+            max-width: 650px; /* Evita que el texto se extienda demasiado */
+            padding: 40px 0;
+        }
+        .hero h1 {
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
+        }
+        
+        .hero p {
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+            font-size: 18px;
+        }
 
         .etiqueta {
             color: var(--azul);
@@ -1078,32 +1090,29 @@ HTML_TEMPLATE = """
 <main>
 
     <!-- PORTADA -->
-
     <section class="hero" id="inicio">
         <div class="contenedor hero-grid">
-
             <div>
                 <p class="etiqueta">
                     <i class="fa-solid fa-bolt"></i>
                     SUPLEMENTEX - PREMIUM SUPPLEMENTS
                 </p>
 
-                <h1>
-                    Tu bienestar,<br>
-                    <span class="naranja">a tu ritmo.</span>
+                <h1 style="font-size: clamp(38px, 5vw, 55px);">
+                    Nutrición de élite,<br>
+                    <span class="naranja">resultados reales.</span>
                 </h1>
 
-                <p>
-                    Suplementos de nutrición para acompañar tus objetivos,
-                    con asesoramiento personalizado.
+                <p style="max-width: 500px;">
+                    Descubrí nuestra línea de suplementos para acompañar 
+                    tu entrenamiento y llevar tu rendimiento al siguiente nivel.
                 </p>
 
-                <a class="boton" href="#productos">
+                <a class="boton" href="#productos" style="margin-top: 15px;">
                     Ver productos
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
-
         </div>
     </section>
 
