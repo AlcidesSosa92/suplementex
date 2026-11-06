@@ -1129,10 +1129,10 @@ HTML_TEMPLATE = """
                 </div>
                 <h3 id="total-carrito" class="total-producto">Total: A confirmar</h3>
                 <div class="botones-modal">
-                    <button class="boton" onclick="enviarWhatsApp('compra')">
+                    <button type="button" class="boton" onclick="enviarWhatsApp('compra')">
                         <i class="fa-brands fa-whatsapp"></i> Comprar por WhatsApp
                     </button>
-                    <button class="boton boton-secundario" onclick="enviarWhatsApp('consulta')">
+                    <button type="button" class="boton boton-secundario" onclick="enviarWhatsApp('consulta')">
                         Consultar
                     </button>
                 </div>
@@ -1147,7 +1147,7 @@ HTML_TEMPLATE = """
             <div class="contacto">
                 <h2>¿Necesitás orientación?</h2>
                 <p>Estamos para ayudarte a conocer nuestros productos y resolver tus consultas.</p>
-                <button class="boton" onclick="enviarOrientacion()">
+                <button type="button" class="boton" onclick="enviarOrientacion()">
                     <i class="fa-brands fa-whatsapp"></i> Necesito orientación
                 </button>
             </div>
@@ -1182,8 +1182,8 @@ HTML_TEMPLATE = """
         </div>
         <div class="total-producto" id="precio-modal">Precio: A confirmar</div>
         <div class="botones-modal">
-            <button class="boton" onclick="agregarSeleccion()"><i class="fa-solid fa-cart-plus"></i> Agregar a mi selección</button>
-            <button class="boton boton-secundario" onclick="cerrarProducto()">Cancelar</button>
+            <button type="button" class="boton" onclick="agregarSeleccion()"><i class="fa-solid fa-cart-plus"></i> Agregar a mi selección</button>
+            <button type="button" class="boton boton-secundario" onclick="cerrarProducto()">Cancelar</button>
         </div>
     </div>
 </div>
@@ -1383,8 +1383,11 @@ HTML_TEMPLATE = """
             alert("Primero agregá algún producto a tu selección.");
             return;
         }
+
         const mensaje = prepararMensaje(tipo);
         const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje);
+        
+        // Fuerza la redirección en la misma pestaña para evitar bloqueos
         window.location.href = url; 
     }
 
@@ -1402,6 +1405,8 @@ HTML_TEMPLATE = """
         const tarjetasProductos = document.querySelectorAll('#productos .tarjeta');
         tarjetasProductos.forEach(tarjeta => {
             const botonVer = tarjeta.querySelector('button');
+            if (!botonVer) return; // Evita errores si no hay botón
+            
             if (categoriaSeleccionada === 'Todos') {
                 tarjeta.style.display = 'block';
             } else {
@@ -1477,4 +1482,4 @@ if __name__ == "__main__":
 
     print("SUPLEMENTEX disponible en https://suplementex.onrender.com/")
 
-    app.run(debug=True, port=5000) 
+    app.run(debug=True, port=5000)
