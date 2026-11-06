@@ -633,14 +633,26 @@ HTML_TEMPLATE = """
             overflow: hidden;
         }
 
-        .hero-grid {
+            .hero {
+            position: relative; /* Importante para que el botón invisible se ubique bien */
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start; /* Alinea el texto a la izquierda para no tapar a las personas */
-            max-width: 650px; /* Evita que el texto se extienda demasiado */
-            padding: 40px 0;
+            min-height: 650px;
+            background-image: url("/imagenes/suplementex.jpg"); /* Sin filtro para que se vea como tu imagen */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Este botón es invisible pero hace clic en el lugar correcto */
+        .boton-invisible-portada {
+            position: absolute;
+            left: 5%; /* Ajusta estos valores según la posición del botón en tu imagen */
+            top: 60%; /* Ajusta estos valores */
+            width: 200px; /* Ancho aproximado del botón de la imagen */
+            height: 50px; /* Alto aproximado */
+            /* background: red; /* Descomenta esto temporalmente para ver dónde está el botón invisible */
+            cursor: pointer;
+            z-index: 10;
         }
         .hero h1 {
             text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
@@ -1059,61 +1071,44 @@ HTML_TEMPLATE = """
 <body>
 
 <header>
+    <header>
     <div class="contenedor barra">
-
-        <a class="logo" href="#inicio">
-            SUPLEMENT<span>EX</span>
+        <!-- LOGO -->
+        <a class="logo" href="#inicio" style="display: flex; align-items: center; gap: 10px;">
+            <img src="/imagenes/logo-suplementex.png" alt="Logo" style="height: 45px;">
+            <div style="display: flex; flex-direction: column; line-height: 1;">
+                <span style="color: white; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SUPLEMENT<span style="color: #00cfff;">EX</span></span>
+                <span style="color: #aab7cc; font-size: 10px; font-weight: 500; letter-spacing: 1px; margin-top: 4px;">NUTRICIÓN - SALUD - RENDIMIENTO</span>
+            </div>
         </a>
 
+        <!-- MENÚ -->
         <nav aria-label="Navegación principal">
-            <a href="#inicio">Inicio</a>
-            <a href="#categorias">Categorías</a>
-            <a href="#productos">Productos</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#inicio"><i class="fa-solid fa-house" style="margin-right: 5px;"></i> Inicio</a>
+            <a href="#productos"><i class="fa-solid fa-lock" style="margin-right: 5px;"></i> Productos <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i></a>
+            <a href="#contacto"><i class="fa-solid fa-circle-question" style="margin-right: 5px;"></i> Contacto</a>
+            <a href="#contacto"><i class="fa-solid fa-circle-exclamation" style="margin-right: 5px;"></i> Nosotros</a>
         </nav>
 
+        <!-- ICONOS DE LA DERECHA -->
         <div class="acciones-header">
             <a class="icono-header" href="#productos">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </a>
-
             <a class="icono-header" href="#carrito">
                 <i class="fa-solid fa-bag-shopping"></i>
             </a>
-
             <span id="contador">0</span>
         </div>
-
     </div>
+</header>
 </header>
 
 <main>
-
-    <!-- PORTADA -->
+        <!-- PORTADA -->
     <section class="hero" id="inicio">
-        <div class="contenedor hero-grid">
-            <div>
-                <p class="etiqueta">
-                    <i class="fa-solid fa-bolt"></i>
-                    SUPLEMENTEX - PREMIUM SUPPLEMENTS
-                </p>
-
-                <h1 style="font-size: clamp(38px, 5vw, 55px);">
-                    Nutrición de élite,<br>
-                    <span class="naranja">resultados reales.</span>
-                </h1>
-
-                <p style="max-width: 500px;">
-                    Descubrí nuestra línea de suplementos para acompañar 
-                    tu entrenamiento y llevar tu rendimiento al siguiente nivel.
-                </p>
-
-                <a class="boton" href="#productos" style="margin-top: 15px;">
-                    Ver productos
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
+        <!-- Botón invisible encima del botón de la imagen -->
+        <a href="#productos" class="boton-invisible-portada" aria-label="Ver productos"></a>
     </section>
 
     <!-- CATEGORIAS -->
@@ -1155,34 +1150,32 @@ HTML_TEMPLATE = """
             </div>
         </div>
     </section>
-
-    <!-- BENEFICIOS -->
-
-    <section class="beneficios">
-        <div class="contenedor rejilla">
-
-            <div class="beneficio">
-                <i class="fa-solid fa-shield-halved icono"></i>
-                <h3>Productos</h3>
-                <p>Consultá por disponibilidad y características.</p>
+        <!-- BENEFICIOS -->
+    <section class="beneficios" style="padding: 30px 0;">
+        <div class="contenedor rejilla" style="grid-template-columns: repeat(4, 1fr); text-align: center;">
+            
+            <div class="beneficio" style="display: flex; flex-direction: column; align-items: center;">
+                <i class="fa-solid fa-shield-halved" style="color: #f9d976; font-size: 35px; margin-bottom: 10px;"></i>
+                <h3 style="margin: 0; color: #fff; font-size: 16px;">Compra Segura</h3>
+                <p style="margin: 5px 0 0 0; font-size: 13px;">Tus datos protegidos</p>
             </div>
 
-            <div class="beneficio">
-                <i class="fa-solid fa-truck-fast icono"></i>
-                <h3>Envíos</h3>
-                <p>Consultá las opciones de entrega.</p>
+            <div class="beneficio" style="display: flex; flex-direction: column; align-items: center;">
+                <i class="fa-solid fa-truck-fast" style="color: #f9d976; font-size: 35px; margin-bottom: 10px;"></i>
+                <h3 style="margin: 0; color: #fff; font-size: 16px;">Envíos a todo el País</h3>
+                <p style="margin: 5px 0 0 0; font-size: 13px;">Rápido y confiable</p>
             </div>
 
-            <div class="beneficio">
-                <i class="fa-solid fa-headset icono"></i>
-                <h3>Asesoramiento</h3>
-                <p>Atención personalizada para tus consultas.</p>
+            <div class="beneficio" style="display: flex; flex-direction: column; align-items: center;">
+                <i class="fa-solid fa-headset" style="color: #f9d976; font-size: 35px; margin-bottom: 10px;"></i>
+                <h3 style="margin: 0; color: #fff; font-size: 16px;">Asesoramiento</h3>
+                <p style="margin: 5px 0 0 0; font-size: 13px;">Estamos para ayudarte</p>
             </div>
 
-            <div class="beneficio">
-                <i class="fa-solid fa-lock icono"></i>
-                <h3>Atención directa</h3>
-                <p>Consultá antes de realizar tu pedido.</p>
+            <div class="beneficio" style="display: flex; flex-direction: column; align-items: center;">
+                <i class="fa-solid fa-star" style="color: #f9d976; font-size: 35px; margin-bottom: 10px;"></i>
+                <h3 style="margin: 0; color: #fff; font-size: 16px;">Calidad Garantizada</h3>
+                <p style="margin: 5px 0 0 0; font-size: 13px;">Resultados reales</p>
             </div>
 
         </div>
