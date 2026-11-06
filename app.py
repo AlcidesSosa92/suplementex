@@ -1034,7 +1034,7 @@ HTML_TEMPLATE = """
         <img src="/imagenes/suplementex.jpg" alt="Portada Suplementex" style="width: 100%; height: auto; display: block;">
 
         <!-- ENLACES INVISIBLES SOBRE LA IMAGEN (Usando porcentajes para que se adapten a cualquier pantalla) -->
-        <a href="#productos" style="position: absolute; left: 6%; top: 63%; width: 26%; height: 8%; cursor: pointer; z-index: 10; background: rgba(255, 0, 0, 0.5);" title="Ver Productos"></a>
+        <a href="#productos" style="position: absolute; left: 6%; top: 63%; width: 26%; height: 8%; cursor: pointer; z-index: 10;" title="Ver Productos"></a>
         <!-- 2. Menú "Inicio" (Arriba) -->
         <a href="#inicio" style="position: absolute; left: 45%; top: 2%; width: 8%; height: 5%; cursor: pointer; z-index: 10;" title="Inicio"></a>
 
@@ -1293,194 +1293,101 @@ HTML_TEMPLATE = """
 </div>
 
 <script>
-
     // PRODUCTOS RECIBIDOS DESDE PYTHON
-
     const productos = {{ productos | tojson }};
-    
     const WHATSAPP_NUMBER = {{ WHATSAPP_NUMBER | tojson }};
     const WHATSAPP_CONFIGURADO = true;
 
     let productoActual = null;
     let carrito = [];
 
-
     // FORMATO DE MONEDA
-
     function formatoPrecio(valor) {
-
         return new Intl.NumberFormat("es-PY", {
             style: "currency",
             currency: "PYG",
             maximumFractionDigits: 0
         }).format(valor);
-
     }
 
-
     // ABRIR DETALLE DEL PRODUCTO
-
     function abrirProducto(id) {
+        productoActual = productos.find(producto => producto.id === id);
+        if (!productoActual) return;
 
-        productoActual = productos.find(
-            producto => producto.id === id
-        );
-
-        if (!productoActual) {
-            return;
-        }
-
-        document.getElementById("modal-nombre").textContent =
-            productoActual.nombre;
-
-        document.getElementById("modal-categoria").textContent =
-            productoActual.categoria;
-
-        document.getElementById("modal-descripcion").textContent =
-            productoActual.descripcion;
-
-        document.getElementById("modal-detalle").textContent =
-            productoActual.detalle;
+        document.getElementById("modal-nombre").textContent = productoActual.nombre;
+        document.getElementById("modal-categoria").textContent = productoActual.categoria;
+        document.getElementById("modal-descripcion").textContent = productoActual.descripcion;
+        document.getElementById("modal-detalle").textContent = productoActual.detalle;
 
         const imagen = document.getElementById("modal-imagen");
-
         if (productoActual.imagen) {
-
             imagen.innerHTML = "";
-
             const img = document.createElement("img");
-
-            img.src = "/imagenes/" + encodeURIComponent(
-                productoActual.imagen
-            );
-
+            img.src = "/imagenes/" + encodeURIComponent(productoActual.imagen);
             img.alt = productoActual.nombre;
-
             imagen.appendChild(img);
-
         } else {
-
             imagen.textContent = productoActual.nombre;
-
         }
 
         const selector = document.getElementById("presentacion");
-
         selector.innerHTML = "";
-
         const presentaciones = productoActual.presentaciones || [];
-
         presentaciones.forEach((presentacion, indice) => {
-
             const opcion = document.createElement("option");
-
             opcion.value = indice;
-
-            if (presentacion.tamano) {
-
-                opcion.textContent = presentacion.tamano;
-
-            } else {
-
-                opcion.textContent = "Presentación a confirmar";
-
-            }
-
+            opcion.textContent = presentacion.tamano ? presentacion.tamano : "Presentación a confirmar";
             selector.appendChild(opcion);
-
         });
 
         if (presentaciones.length === 0) {
-
             const opcion = document.createElement("option");
-
             opcion.value = "-1";
             opcion.textContent = "Presentación a confirmar";
-
             selector.appendChild(opcion);
-
         }
 
         document.getElementById("cantidad-producto").value = 1;
-
         actualizarPrecio();
-
         document.getElementById("modal-producto").classList.add("activo");
-
     }
-
 
     // CERRAR VENTANA
-
     function cerrarProducto() {
-
         document.getElementById("modal-producto").classList.remove("activo");
-
         productoActual = null;
-
     }
 
-
     // ACTUALIZAR PRECIO AUTOMATICAMENTE
-
     function actualizarPrecio() {
-
-        if (!productoActual) {
-            return;
-        }
+        if (!productoActual) return;
 
         const selector = document.getElementById("presentacion");
-
         const indice = Number(selector.value);
-
-        const cantidad = Math.max(
-            1,
-            Number(document.getElementById("cantidad-producto").value) || 1
-        );
-
+        const cantidad = Math.max(1, Number(document.getElementById("cantidad-producto").value) || 1);
         const presentacion = productoActual.presentaciones[indice];
-
         const precioElemento = document.getElementById("precio-modal");
 
-        if (!presentacion || presentacion.precio === null ||
-            presentacion.precio === undefined) {
-
+        if (!presentacion || presentacion.precio === null || presentacion.precio === undefined) {
             precioElemento.textContent = "Precio: A confirmar";
-
             return;
-
         }
 
         const total = presentacion.precio * cantidad;
-
-        precioElemento.textContent =
-            "Total: " + formatoPrecio(total);
-
+        precioElemento.textContent = "Total: " + formatoPrecio(total);
     }
 
-
     // AGREGAR PRODUCTO AL CARRITO
-
     function agregarSeleccion() {
+        if (!productoActual) return;
 
-        if (!productoActual) {
-            return;
-        }
-
-        const indice = Number(
-            document.getElementById("presentacion").value
-        );
-
-        const presentacion =
-            productoActual.presentaciones[indice] || {
-                tamano: "Presentación a confirmar",
-                precio: null
-            };
-
-        const cantidad = Math.max(
-            1,
-            Number(document.getElementById("cantidad-producto").value) || 1
-        );
+        const indice = Number(document.getElementById("presentacion").value);
+        const presentacion = productoActual.presentaciones[indice] || {
+            tamano: "Presentación a confirmar",
+            precio: null
+        };
+        const cantidad = Math.max(1, Number(document.getElementById("cantidad-producto").value) || 1);
 
         const existente = carrito.find(item =>
             item.id === productoActual.id &&
@@ -1488,315 +1395,157 @@ HTML_TEMPLATE = """
         );
 
         if (existente) {
-
             existente.cantidad += cantidad;
-
         } else {
-
             carrito.push({
-
                 id: productoActual.id,
-
                 nombre: productoActual.nombre,
-
-                tamano: presentacion.tamano ||
-                    "Presentación a confirmar",
-
+                tamano: presentacion.tamano || "Presentación a confirmar",
                 precio: presentacion.precio,
-
                 cantidad: cantidad
-
             });
-
         }
 
         actualizarCarrito();
-
         cerrarProducto();
-
     }
 
-
     // MOSTRAR CARRITO
-
     function actualizarCarrito() {
-
         const lista = document.getElementById("lista-carrito");
-
         const contador = document.getElementById("contador");
-
+        const contadorFlotante = document.getElementById("contador-flotante");
         const totalElemento = document.getElementById("total-carrito");
-
+        
         lista.innerHTML = "";
-
         let cantidadTotal = 0;
-
         let total = 0;
-
         let precioPendiente = false;
 
         if (carrito.length === 0) {
-
-            lista.innerHTML =
-                "<p>Todavía no seleccionaste productos.</p>";
-
+            lista.innerHTML = "<p>Todavía no seleccionaste productos.</p>";
             contador.textContent = "0";
-
+            if(contadorFlotante) contadorFlotante.textContent = "0";
             totalElemento.textContent = "Total: A confirmar";
-
             return;
-
         }
 
         carrito.forEach((item, indice) => {
-
             cantidadTotal += item.cantidad;
-
-            const subtotal = item.precio === null
-                ? null
-                : item.precio * item.cantidad;
+            const subtotal = item.precio === null ? null : item.precio * item.cantidad;
 
             if (subtotal === null) {
-
                 precioPendiente = true;
-
             } else {
-
                 total += subtotal;
-
             }
 
             const elemento = document.createElement("div");
-
             elemento.className = "item-carrito";
-
+            
             const informacion = document.createElement("div");
-
-            const nombre = document.createElement("strong");
-
-            nombre.textContent = item.nombre;
-
-            const detalle = document.createElement("p");
-
-            detalle.textContent =
-                item.tamano + " | Cantidad: " + item.cantidad;
-
-            const precio = document.createElement("p");
-
-            precio.textContent = subtotal === null
-                ? "Precio a confirmar"
-                : formatoPrecio(subtotal);
-
-            informacion.appendChild(nombre);
-
-            informacion.appendChild(detalle);
-
-            informacion.appendChild(precio);
+            informacion.innerHTML = `
+                <strong>${item.nombre}</strong>
+                <p>${item.tamano} | Cantidad: ${item.cantidad}</p>
+                <p>${subtotal === null ? "Precio a confirmar" : formatoPrecio(subtotal)}</p>
+            `;
 
             const controles = document.createElement("div");
-
             controles.className = "cantidad-controles";
-
+            
             const disminuir = document.createElement("button");
-
             disminuir.textContent = "-";
-
             disminuir.onclick = () => cambiarCantidad(indice, -1);
 
             const aumentar = document.createElement("button");
-
             aumentar.textContent = "+";
-
             aumentar.onclick = () => cambiarCantidad(indice, 1);
 
             const eliminar = document.createElement("button");
-
             eliminar.textContent = "Eliminar";
-
             eliminar.className = "eliminar";
-
             eliminar.onclick = () => eliminarProducto(indice);
 
             controles.appendChild(disminuir);
-
             controles.appendChild(aumentar);
-
             controles.appendChild(eliminar);
 
             elemento.appendChild(informacion);
-
             elemento.appendChild(controles);
-
             lista.appendChild(elemento);
-
         });
 
         contador.textContent = cantidadTotal;
+        if(contadorFlotante) contadorFlotante.textContent = cantidadTotal;
 
         if (precioPendiente) {
-
-            totalElemento.textContent =
-                "Total: " + formatoPrecio(total) + " + precios a confirmar";
-
+            totalElemento.textContent = "Total: " + formatoPrecio(total) + " + precios a confirmar";
         } else {
-
-            totalElemento.textContent =
-                "Total: " + formatoPrecio(total);
-
+            totalElemento.textContent = "Total: " + formatoPrecio(total);
         }
-
     }
-
 
     // CAMBIAR CANTIDAD DESDE EL CARRITO
-
     function cambiarCantidad(indice, cambio) {
-
         carrito[indice].cantidad += cambio;
-
         if (carrito[indice].cantidad <= 0) {
-
             carrito.splice(indice, 1);
-
         }
-
         actualizarCarrito();
-
     }
-
 
     // ELIMINAR PRODUCTO
-
     function eliminarProducto(indice) {
-
         carrito.splice(indice, 1);
-
         actualizarCarrito();
-
     }
-
 
     // PREPARAR MENSAJE PARA WHATSAPP
-
     function prepararMensaje(tipo) {
-
-        let mensaje = "";
-
-        if (tipo === "compra") {
-
-            mensaje = "Hola, quiero realizar un pedido en SUPLEMENTEX.\\n\\n";
-
-        } else {
-
-            mensaje = "Hola, quisiera consultar sobre estos productos de SUPLEMENTEX.\\n\\n";
-
-        }
+        let mensaje = tipo === "compra" ? "Hola, quiero realizar un pedido en SUPLEMENTEX.\n\n" : "Hola, quisiera consultar sobre estos productos de SUPLEMENTEX.\n\n";
 
         carrito.forEach(item => {
-
-            mensaje +=
-                "- " + item.nombre +
-                "\\n  Presentación: " + item.tamano +
-                "\\n  Cantidad: " + item.cantidad;
-
+            mensaje += "- " + item.nombre + "\n  Presentación: " + item.tamano + "\n  Cantidad: " + item.cantidad;
             if (item.precio !== null) {
-
-                mensaje +=
-                    "\\n  Subtotal: " +
-                    formatoPrecio(item.precio * item.cantidad);
-
+                mensaje += "\n  Subtotal: " + formatoPrecio(item.precio * item.cantidad);
             } else {
-
-                mensaje += "\\n  Precio: A confirmar";
-
+                mensaje += "\n  Precio: A confirmar";
             }
-
-            mensaje += "\\n\\n";
-
+            mensaje += "\n\n";
         });
-
         mensaje += "Quedo atento/a. ¡Gracias!";
-
         return mensaje;
-
     }
 
-
     // ABRIR WHATSAPP
-
     function enviarWhatsApp(tipo) {
-
         if (carrito.length === 0) {
-
             alert("Primero agregá algún producto a tu selección.");
-
             return;
-
-        }
-
-        if (WHATSAPP_CONFIGURADO === false) {
-
-            alert("Primero configurá tu número de WhatsApp en app.py.");
-
-            return;
-
         }
 
         const mensaje = prepararMensaje(tipo);
-
-        const url = "https://wa.me/" + WHATSAPP_NUMBER +
-            "?text=" + encodeURIComponent(mensaje);
-
-        window.open(url, "_blank", "noopener,noreferrer");
-
+        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje);
+        
+        // Redirige en la misma pestaña (evita el bloqueo del navegador)
+        window.location.href = url; 
     }
 
-
     // ORIENTACION POR WHATSAPP
-
     function enviarOrientacion() {
-
-        if (WHATSAPP_CONFIGURADO === false) {
-
-            alert("Primero configurá tu número de WhatsApp en app.py.");
-
-            return;
-
-        }
-
-        const mensaje =
-            "Hola, necesito orientación sobre los productos de SUPLEMENTEX.";
-
-            const url = "https://wa.me/" + WHATSAPP_NUMBER +
-            "?text=" + encodeURIComponent(mensaje);
-
-            const ventana = window.open(url, "_blank");
-
-            if (!ventana) {
-            alert("El navegador bloqueó la ventana. Permití las ventanas emergentes.");
-            }
-        }
-
-    
-
+        const mensaje = "Hola, necesito orientación sobre los productos de SUPLEMENTEX.";
+        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje);
+        window.location.href = url;
+    }
 
     // CERRAR MODAL AL HACER CLIC FUERA
-
-    document.getElementById("modal-producto").addEventListener(
-        "click",
-        function(event) {
-
-            if (event.target === this) {
-
-                cerrarProducto();
-
-            }
-
+    document.getElementById("modal-producto").addEventListener("click", function(event) {
+        if (event.target === this) {
+            cerrarProducto();
         }
-    );
-     // ============================================================
+    });
+
     // FUNCIÓN PARA FILTRAR CATEGORÍAS
-    // ============================================================
     function filtrarCategoria(categoriaSeleccionada) {
         const tarjetasProductos = document.querySelectorAll('#productos .tarjeta');
         
@@ -1819,9 +1568,44 @@ HTML_TEMPLATE = """
 
         document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
     }
-
 </script>
-
+<!-- BOTÓN FLOTANTE PARA IR AL CARRITO -->
+<a href="#carrito" style="
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--naranja);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 1000;
+    text-decoration: none;
+    transition: transform 0.2s;
+" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <!-- Aquí mostramos el número de productos en el carrito -->
+    <span id="contador-flotante" style="
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #00cfff;
+        color: #000;
+        font-size: 14px;
+        font-weight: bold;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    ">0</span>
+</a>
 </body>
 </html>
 """
