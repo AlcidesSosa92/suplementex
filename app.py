@@ -619,50 +619,12 @@ HTML_TEMPLATE = """
             font-size: 12px;
             font-weight: 900;
         }
+               /* PORTADA LIMPIA */
         .hero {
             position: relative;
             width: 100%;
-            min-height: 650px;
-            /* Esto pone un filtro oscuro sobre la foto para que el texto resalte */
-            background-image: linear-gradient(to right, rgba(5, 8, 16, 0.95) 0%, rgba(5, 8, 16, 0.75) 50%, rgba(5, 8, 16, 0.4) 100%), url("/imagenes/suplementex.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center; 
-            overflow: hidden;
+            /* Como usamos <img> dentro del HTML, no necesitamos background aquí */
         }
-
-            .hero {
-            position: relative; /* Importante para que el botón invisible se ubique bien */
-            width: 100%;
-            min-height: 650px;
-            background-image: url("/imagenes/suplementex.jpg"); /* Sin filtro para que se vea como tu imagen */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        /* Este botón es invisible pero hace clic en el lugar correcto */
-        .boton-invisible-portada {
-            position: absolute;
-            left: 5%; /* Ajusta estos valores según la posición del botón en tu imagen */
-            top: 60%; /* Ajusta estos valores */
-            width: 200px; /* Ancho aproximado del botón de la imagen */
-            height: 50px; /* Alto aproximado */
-            /* background: red; /* Descomenta esto temporalmente para ver dónde está el botón invisible */
-            cursor: pointer;
-            z-index: 10;
-        }
-        .hero h1 {
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
-        }
-        
-        .hero p {
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-            font-size: 18px;
-        }
-
         .etiqueta {
             color: var(--azul);
             font-weight: 700;
@@ -1012,10 +974,6 @@ HTML_TEMPLATE = """
         }
 
         @media (max-width: 850px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
             .rejilla {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
@@ -1069,50 +1027,30 @@ HTML_TEMPLATE = """
 </head>
 
 <body>
-
-<header>
-    <header>
-    <div class="contenedor barra">
-        <!-- LOGO -->
-        <a class="logo" href="#inicio" style="display: flex; align-items: center; gap: 10px;">
-            <img src="/imagenes/logo-suplementex.png" alt="Logo" style="height: 45px;">
-            <div style="display: flex; flex-direction: column; line-height: 1;">
-                <span style="color: white; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SUPLEMENT<span style="color: #00cfff;">EX</span></span>
-                <span style="color: #aab7cc; font-size: 10px; font-weight: 500; letter-spacing: 1px; margin-top: 4px;">NUTRICIÓN - SALUD - RENDIMIENTO</span>
-            </div>
-        </a>
-
-        <!-- MENÚ -->
-        <nav aria-label="Navegación principal">
-            <a href="#inicio"><i class="fa-solid fa-house" style="margin-right: 5px;"></i> Inicio</a>
-            <a href="#productos"><i class="fa-solid fa-lock" style="margin-right: 5px;"></i> Productos <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i></a>
-            <a href="#contacto"><i class="fa-solid fa-circle-question" style="margin-right: 5px;"></i> Contacto</a>
-            <a href="#contacto"><i class="fa-solid fa-circle-exclamation" style="margin-right: 5px;"></i> Nosotros</a>
-        </nav>
-
-        <!-- ICONOS DE LA DERECHA -->
-        <div class="acciones-header">
-            <a class="icono-header" href="#productos">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
-            <a class="icono-header" href="#carrito">
-                <i class="fa-solid fa-bag-shopping"></i>
-            </a>
-            <span id="contador">0</span>
-        </div>
-    </div>
-</header>
-</header>
-
 <main>
-        <!-- PORTADA -->
-    <section class="hero" id="inicio">
-        <!-- Botón invisible encima del botón de la imagen -->
-        <a href="#productos" class="boton-invisible-portada" aria-label="Ver productos"></a>
+    <!-- PORTADA CON LA IMAGEN COMPLETA -->
+    <section class="hero" id="inicio" style="position: relative; width: 100%;">
+        <!-- La imagen completa -->
+        <img src="/imagenes/suplementex.jpg" alt="Portada Suplementex" style="width: 100%; height: auto; display: block;">
+
+        <!-- ENLACES INVISIBLES SOBRE LA IMAGEN (Usando porcentajes para que se adapten a cualquier pantalla) -->
+        <a href="#productos" style="position: absolute; left: 6%; top: 63%; width: 26%; height: 8%; cursor: pointer; z-index: 10; background: rgba(255, 0, 0, 0.5);" title="Ver Productos"></a>
+        <!-- 2. Menú "Inicio" (Arriba) -->
+        <a href="#inicio" style="position: absolute; left: 45%; top: 2%; width: 8%; height: 5%; cursor: pointer; z-index: 10;" title="Inicio"></a>
+
+        <!-- 3. Menú "Productos" (Arriba) -->
+        <a href="#productos" style="position: absolute; left: 54%; top: 2%; width: 12%; height: 5%; cursor: pointer; z-index: 10;" title="Productos"></a>
+
+        <!-- 4. Menú "Contacto" (Arriba) -->
+        <a href="#contacto" style="position: absolute; left: 67%; top: 2%; width: 10%; height: 5%; cursor: pointer; z-index: 10;" title="Contacto"></a>
+
+        <!-- 5. Menú "Nosotros" (Arriba) -->
+        <a href="#contacto" style="position: absolute; left: 78%; top: 2%; width: 10%; height: 5%; cursor: pointer; z-index: 10;" title="Nosotros"></a>
+
     </section>
 
     <!-- CATEGORIAS -->
-
+        <!-- CATEGORIAS -->
     <section id="categorias">
         <div class="contenedor">
 
@@ -1122,60 +1060,33 @@ HTML_TEMPLATE = """
             </div>
 
             <div class="rejilla">
-
-                <div class="tarjeta">
+                <!-- Botón Proteínas -->
+                <div class="tarjeta" onclick="filtrarCategoria('Proteínas')" style="cursor: pointer;">
                     <i class="fa-solid fa-jar icono"></i>
                     <h3>Proteínas</h3>
                     <p>Opciones para complementar tu alimentación.</p>
                 </div>
-
-                <div class="tarjeta">
+                
+                <!-- Botón Creatinas -->
+                <div class="tarjeta" onclick="filtrarCategoria('Creatinas')" style="cursor: pointer;">
                     <i class="fa-solid fa-cubes icono"></i>
                     <h3>Creatinas</h3>
                     <p>Productos para acompañar tu entrenamiento.</p>
                 </div>
 
-                <div class="tarjeta">
+                <!-- Botón Aminoácidos -->
+                <div class="tarjeta" onclick="filtrarCategoria('Aminoácidos')" style="cursor: pointer;">
                     <i class="fa-solid fa-capsules icono"></i>
                     <h3>Aminoácidos</h3>
                     <p>Consultá las opciones disponibles.</p>
                 </div>
 
-                <div class="tarjeta">
-                    <i class="fa-solid fa-bottle-water icono"></i>
-                    <h3>Accesorios</h3>
-                    <p>Artículos para tus actividades deportivas.</p>
+                <!-- Botón Ver Todos -->
+                <div class="tarjeta" onclick="filtrarCategoria('Todos')" style="cursor: pointer; border-color: var(--naranja);">
+                    <i class="fa-solid fa-list icono" style="color: var(--naranja);"></i>
+                    <h3>Ver Todos</h3>
+                    <p>Mostrar el catálogo completo.</p>
                 </div>
-
-            </div>
-        </div>
-    </section>
-        <!-- BENEFICIOS -->
-    <section class="beneficios" style="padding: 30px 0;">
-        <div class="contenedor rejilla" style="grid-template-columns: repeat(4, 1fr); text-align: center;">
-            
-            <div class="beneficio" style="display: flex; flex-direction: column; align-items: center;">
-                <i class="fa-solid fa-shield-halved" style="color: #f9d976; font-size: 35px; margin-bottom: 10px;"></i>
-                <h3 style="margin: 0; color: #fff; font-size: 16px;">Compra Segura</h3>
-                <p style="margin: 5px 0 0 0; font-size: 13px;">Tus datos protegidos</p>
-            </div>
-
-            <div class="beneficio" style="display: flex; flex-direction: column; align-items: center;">
-                <i class="fa-solid fa-truck-fast" style="color: #f9d976; font-size: 35px; margin-bottom: 10px;"></i>
-                <h3 style="margin: 0; color: #fff; font-size: 16px;">Envíos a todo el País</h3>
-                <p style="margin: 5px 0 0 0; font-size: 13px;">Rápido y confiable</p>
-            </div>
-
-            <div class="beneficio" style="display: flex; flex-direction: column; align-items: center;">
-                <i class="fa-solid fa-headset" style="color: #f9d976; font-size: 35px; margin-bottom: 10px;"></i>
-                <h3 style="margin: 0; color: #fff; font-size: 16px;">Asesoramiento</h3>
-                <p style="margin: 5px 0 0 0; font-size: 13px;">Estamos para ayudarte</p>
-            </div>
-
-            <div class="beneficio" style="display: flex; flex-direction: column; align-items: center;">
-                <i class="fa-solid fa-star" style="color: #f9d976; font-size: 35px; margin-bottom: 10px;"></i>
-                <h3 style="margin: 0; color: #fff; font-size: 16px;">Calidad Garantizada</h3>
-                <p style="margin: 5px 0 0 0; font-size: 13px;">Resultados reales</p>
             </div>
 
         </div>
@@ -1883,6 +1794,31 @@ HTML_TEMPLATE = """
 
         }
     );
+     // ============================================================
+    // FUNCIÓN PARA FILTRAR CATEGORÍAS
+    // ============================================================
+    function filtrarCategoria(categoriaSeleccionada) {
+        const tarjetasProductos = document.querySelectorAll('#productos .tarjeta');
+        
+        tarjetasProductos.forEach(tarjeta => {
+            const botonVer = tarjeta.querySelector('button');
+            
+            if (categoriaSeleccionada === 'Todos') {
+                tarjeta.style.display = 'block';
+            } else {
+                const productoId = botonVer.getAttribute('onclick').match(/'([^']+)'/)[1];
+                const producto = productos.find(p => p.id === productoId);
+                
+                if (producto && producto.categoria === categoriaSeleccionada) {
+                    tarjeta.style.display = 'block';
+                } else {
+                    tarjeta.style.display = 'none';
+                }
+            }
+        });
+
+        document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+    }
 
 </script>
 
