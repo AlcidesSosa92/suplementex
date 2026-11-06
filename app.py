@@ -1028,32 +1028,34 @@ HTML_TEMPLATE = """
 
 <body>
 <main>
-    <!-- PORTADA CON LA IMAGEN COMPLETA -->
-    <section class="hero" id="inicio" style="position: relative; width: 100%;">
-        <!-- La imagen completa -->
+    <!-- PORTADA CON IMAGEN Y BOTÓN REAL -->
+    <section id="inicio" style="position: relative; width: 100%; text-align: center; padding-bottom: 20px;">
+        <!-- La imagen recortada -->
         <img src="/imagenes/suplementex.jpg" alt="Portada Suplementex" style="width: 100%; height: auto; display: block;">
-
-        <!-- ENLACES INVISIBLES SOBRE LA IMAGEN (Usando porcentajes para que se adapten a cualquier pantalla) -->
-        <a href="#productos" style="position: absolute; left: 6%; top: 63%; width: 26%; height: 8%; cursor: pointer; z-index: 10;" title="Ver Productos"></a>
-        <!-- 2. Menú "Inicio" (Arriba) -->
-        <a href="#inicio" style="position: absolute; left: 45%; top: 2%; width: 8%; height: 5%; cursor: pointer; z-index: 10;" title="Inicio"></a>
-
-        <!-- 3. Menú "Productos" (Arriba) -->
-        <a href="#productos" style="position: absolute; left: 54%; top: 2%; width: 12%; height: 5%; cursor: pointer; z-index: 10;" title="Productos"></a>
-
-        <!-- 4. Menú "Contacto" (Arriba) -->
-        <a href="#contacto" style="position: absolute; left: 67%; top: 2%; width: 10%; height: 5%; cursor: pointer; z-index: 10;" title="Contacto"></a>
-
-        <!-- 5. Menú "Nosotros" (Arriba) -->
-        <a href="#contacto" style="position: absolute; left: 78%; top: 2%; width: 10%; height: 5%; cursor: pointer; z-index: 10;" title="Nosotros"></a>
-
+        
+        <!-- BOTÓN DORADO REAL DEBAJO DE LA IMAGEN -->
+        <div style="margin-top: -30px; position: relative; z-index: 10;">
+            <a href="#productos" style="
+                display: inline-block;
+                background: linear-gradient(180deg, #f9d976 0%, #e2a12c 100%);
+                color: #000;
+                font-weight: 900;
+                font-size: 18px;
+                padding: 15px 40px;
+                border-radius: 50px;
+                text-decoration: none;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+                border: 2px solid #fff3c4;
+                transition: transform 0.2s;
+            " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <i class="fa-solid fa-cart-shopping"></i> Ver Productos
+            </a>
+        </div>
     </section>
 
-    <!-- CATEGORIAS -->
-        <!-- CATEGORIAS -->
-    <section id="categorias">
+    <!-- CATEGORIAS (Recuperadas) -->
+    <section id="categorias" style="padding-top: 20px;">
         <div class="contenedor">
-
             <div class="subtitulo">
                 <h2>Categorías principales</h2>
                 <p>Encontrá el suplemento ideal para vos.</p>
@@ -1088,212 +1090,105 @@ HTML_TEMPLATE = """
                     <p>Mostrar el catálogo completo.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- PRODUCTOS -->
-
     <section id="productos">
         <div class="contenedor">
-
             <div class="subtitulo">
                 <h2>Productos destacados</h2>
                 <p>Seleccioná un producto para conocer sus presentaciones.</p>
             </div>
 
             <div class="rejilla">
-
                 {% for producto in productos %}
-
                 <article class="tarjeta">
-
                     <div class="producto-imagen">
-
                         {% if producto.imagen %}
-                        <img
-                            src="{{ url_for('static', filename=producto.imagen) }}"
-                            alt="{{ producto.nombre }}"
-                            loading="lazy"
-                        >
+                        <img src="{{ url_for('static', filename=producto.imagen) }}" alt="{{ producto.nombre }}" loading="lazy">
                         {% else %}
                         {{ producto.nombre }}
                         {% endif %}
-
                     </div>
-
                     <h3>{{ producto.nombre }}</h3>
-
                     <p>{{ producto.descripcion }}</p>
-
                     <div class="precio">Consultar precio</div>
-
-                    <button class="boton"
-                            type="button"
-                            onclick="abrirProducto('{{ producto.id }}')">
-                        Ver producto
-                        <i class="fa-solid fa-arrow-right"></i>
+                    <button class="boton" type="button" onclick="abrirProducto('{{ producto.id }}')">
+                        Ver producto <i class="fa-solid fa-arrow-right"></i>
                     </button>
-
                 </article>
-
                 {% endfor %}
-
             </div>
 
             <!-- CARRITO -->
-
             <div class="carrito" id="carrito">
-
-                <h2>
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    Tu selección
-                </h2>
-
+                <h2><i class="fa-solid fa-bag-shopping"></i> Tu selección</h2>
                 <div id="lista-carrito">
                     <p>Todavía no seleccionaste productos.</p>
                 </div>
-
-                <h3 id="total-carrito" class="total-producto">
-                    Total: A confirmar
-                </h3>
-
+                <h3 id="total-carrito" class="total-producto">Total: A confirmar</h3>
                 <div class="botones-modal">
-                    <button class="boton"
-                            onclick="enviarWhatsApp('compra')">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        Comprar por WhatsApp
+                    <button class="boton" onclick="enviarWhatsApp('compra')">
+                        <i class="fa-brands fa-whatsapp"></i> Comprar por WhatsApp
                     </button>
-
-                    <button class="boton boton-secundario"
-                            onclick="enviarWhatsApp('consulta')">
+                    <button class="boton boton-secundario" onclick="enviarWhatsApp('consulta')">
                         Consultar
                     </button>
                 </div>
-
-                <p class="nota">
-                    Los precios y la disponibilidad se confirman por WhatsApp.
-                </p>
-
+                <p class="nota">Los precios y la disponibilidad se confirman por WhatsApp.</p>
             </div>
-
         </div>
     </section>
 
     <!-- CONTACTO -->
-
     <section id="contacto">
         <div class="contenedor">
-
             <div class="contacto">
-
                 <h2>¿Necesitás orientación?</h2>
-
-                <p>
-                    Estamos para ayudarte a conocer nuestros productos
-                    y resolver tus consultas.
-                </p>
-
-                <button class="boton"
-                        onclick="enviarOrientacion()">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    Necesito orientación
+                <p>Estamos para ayudarte a conocer nuestros productos y resolver tus consultas.</p>
+                <button class="boton" onclick="enviarOrientacion()">
+                    <i class="fa-brands fa-whatsapp"></i> Necesito orientación
                 </button>
-
             </div>
-
         </div>
     </section>
-
 </main>
 
 <footer>
     <div class="contenedor">
-
         <h3>SUPLEMENT<span class="naranja">EX</span></h3>
-
         <p>Tu bienestar, a tu ritmo.</p>
         <p>Asunción, Paraguay</p>
-
     </div>
 </footer>
 
 <!-- VENTANA DE DETALLES DEL PRODUCTO -->
-
 <div class="modal" id="modal-producto">
-
     <div class="modal-contenido">
-
-        <button class="cerrar-modal"
-                onclick="cerrarProducto()"
-                aria-label="Cerrar">
-            &times;
-        </button>
-
+        <button class="cerrar-modal" onclick="cerrarProducto()" aria-label="Cerrar">&times;</button>
         <div id="modal-imagen" class="modal-imagen"></div>
-
         <h2 id="modal-nombre"></h2>
-
         <p id="modal-categoria"></p>
-
         <p id="modal-descripcion"></p>
-
         <p id="modal-detalle"></p>
-
         <div class="campo">
-
-            <label for="presentacion">
-                Seleccioná una presentación
-            </label>
-
-            <select id="presentacion"
-                    onchange="actualizarPrecio()">
-            </select>
-
+            <label for="presentacion">Seleccioná una presentación</label>
+            <select id="presentacion" onchange="actualizarPrecio()"></select>
         </div>
-
         <div class="campo">
-
-            <label for="cantidad-producto">
-                Cantidad
-            </label>
-
-            <input
-                type="number"
-                id="cantidad-producto"
-                value="1"
-                min="1"
-                max="99"
-                onchange="actualizarPrecio()"
-            >
-
+            <label for="cantidad-producto">Cantidad</label>
+            <input type="number" id="cantidad-producto" value="1" min="1" max="99" onchange="actualizarPrecio()">
         </div>
-
-        <div class="total-producto" id="precio-modal">
-            Precio: A confirmar
-        </div>
-
+        <div class="total-producto" id="precio-modal">Precio: A confirmar</div>
         <div class="botones-modal">
-
-            <button class="boton"
-                    onclick="agregarSeleccion()">
-                <i class="fa-solid fa-cart-plus"></i>
-                Agregar a mi selección
-            </button>
-
-            <button class="boton boton-secundario"
-                    onclick="cerrarProducto()">
-                Cancelar
-            </button>
-
+            <button class="boton" onclick="agregarSeleccion()"><i class="fa-solid fa-cart-plus"></i> Agregar a mi selección</button>
+            <button class="boton boton-secundario" onclick="cerrarProducto()">Cancelar</button>
         </div>
-
     </div>
-
 </div>
 
 <script>
-    // PRODUCTOS RECIBIDOS DESDE PYTHON
     const productos = {{ productos | tojson }};
     const WHATSAPP_NUMBER = {{ WHATSAPP_NUMBER | tojson }};
     const WHATSAPP_CONFIGURADO = true;
@@ -1301,16 +1196,10 @@ HTML_TEMPLATE = """
     let productoActual = null;
     let carrito = [];
 
-    // FORMATO DE MONEDA
     function formatoPrecio(valor) {
-        return new Intl.NumberFormat("es-PY", {
-            style: "currency",
-            currency: "PYG",
-            maximumFractionDigits: 0
-        }).format(valor);
+        return new Intl.NumberFormat("es-PY", { style: "currency", currency: "PYG", maximumFractionDigits: 0 }).format(valor);
     }
 
-    // ABRIR DETALLE DEL PRODUCTO
     function abrirProducto(id) {
         productoActual = productos.find(producto => producto.id === id);
         if (!productoActual) return;
@@ -1353,16 +1242,13 @@ HTML_TEMPLATE = """
         document.getElementById("modal-producto").classList.add("activo");
     }
 
-    // CERRAR VENTANA
     function cerrarProducto() {
         document.getElementById("modal-producto").classList.remove("activo");
         productoActual = null;
     }
 
-    // ACTUALIZAR PRECIO AUTOMATICAMENTE
     function actualizarPrecio() {
         if (!productoActual) return;
-
         const selector = document.getElementById("presentacion");
         const indice = Number(selector.value);
         const cantidad = Math.max(1, Number(document.getElementById("cantidad-producto").value) || 1);
@@ -1373,26 +1259,17 @@ HTML_TEMPLATE = """
             precioElemento.textContent = "Precio: A confirmar";
             return;
         }
-
         const total = presentacion.precio * cantidad;
         precioElemento.textContent = "Total: " + formatoPrecio(total);
     }
 
-    // AGREGAR PRODUCTO AL CARRITO
     function agregarSeleccion() {
         if (!productoActual) return;
-
         const indice = Number(document.getElementById("presentacion").value);
-        const presentacion = productoActual.presentaciones[indice] || {
-            tamano: "Presentación a confirmar",
-            precio: null
-        };
+        const presentacion = productoActual.presentaciones[indice] || { tamano: "Presentación a confirmar", precio: null };
         const cantidad = Math.max(1, Number(document.getElementById("cantidad-producto").value) || 1);
 
-        const existente = carrito.find(item =>
-            item.id === productoActual.id &&
-            item.tamano === (presentacion.tamano || "Presentación a confirmar")
-        );
+        const existente = carrito.find(item => item.id === productoActual.id && item.tamano === (presentacion.tamano || "Presentación a confirmar"));
 
         if (existente) {
             existente.cantidad += cantidad;
@@ -1405,12 +1282,10 @@ HTML_TEMPLATE = """
                 cantidad: cantidad
             });
         }
-
         actualizarCarrito();
         cerrarProducto();
     }
 
-    // MOSTRAR CARRITO
     function actualizarCarrito() {
         const lista = document.getElementById("lista-carrito");
         const contador = document.getElementById("contador");
@@ -1433,12 +1308,8 @@ HTML_TEMPLATE = """
         carrito.forEach((item, indice) => {
             cantidadTotal += item.cantidad;
             const subtotal = item.precio === null ? null : item.precio * item.cantidad;
-
-            if (subtotal === null) {
-                precioPendiente = true;
-            } else {
-                total += subtotal;
-            }
+            if (subtotal === null) precioPendiente = true;
+            else total += subtotal;
 
             const elemento = document.createElement("div");
             elemento.className = "item-carrito";
@@ -1469,7 +1340,6 @@ HTML_TEMPLATE = """
             controles.appendChild(disminuir);
             controles.appendChild(aumentar);
             controles.appendChild(eliminar);
-
             elemento.appendChild(informacion);
             elemento.appendChild(controles);
             lista.appendChild(elemento);
@@ -1485,79 +1355,58 @@ HTML_TEMPLATE = """
         }
     }
 
-    // CAMBIAR CANTIDAD DESDE EL CARRITO
     function cambiarCantidad(indice, cambio) {
         carrito[indice].cantidad += cambio;
-        if (carrito[indice].cantidad <= 0) {
-            carrito.splice(indice, 1);
-        }
+        if (carrito[indice].cantidad <= 0) carrito.splice(indice, 1);
         actualizarCarrito();
     }
 
-    // ELIMINAR PRODUCTO
     function eliminarProducto(indice) {
         carrito.splice(indice, 1);
         actualizarCarrito();
     }
 
-    // PREPARAR MENSAJE PARA WHATSAPP
     function prepararMensaje(tipo) {
         let mensaje = tipo === "compra" ? "Hola, quiero realizar un pedido en SUPLEMENTEX.\n\n" : "Hola, quisiera consultar sobre estos productos de SUPLEMENTEX.\n\n";
-
         carrito.forEach(item => {
             mensaje += "- " + item.nombre + "\n  Presentación: " + item.tamano + "\n  Cantidad: " + item.cantidad;
-            if (item.precio !== null) {
-                mensaje += "\n  Subtotal: " + formatoPrecio(item.precio * item.cantidad);
-            } else {
-                mensaje += "\n  Precio: A confirmar";
-            }
+            if (item.precio !== null) mensaje += "\n  Subtotal: " + formatoPrecio(item.precio * item.cantidad);
+            else mensaje += "\n  Precio: A confirmar";
             mensaje += "\n\n";
         });
         mensaje += "Quedo atento/a. ¡Gracias!";
         return mensaje;
     }
 
-    // ABRIR WHATSAPP
     function enviarWhatsApp(tipo) {
         if (carrito.length === 0) {
             alert("Primero agregá algún producto a tu selección.");
             return;
         }
-
         const mensaje = prepararMensaje(tipo);
         const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje);
-        
-        // Redirige en la misma pestaña (evita el bloqueo del navegador)
         window.location.href = url; 
     }
 
-    // ORIENTACION POR WHATSAPP
     function enviarOrientacion() {
         const mensaje = "Hola, necesito orientación sobre los productos de SUPLEMENTEX.";
         const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje);
         window.location.href = url;
     }
 
-    // CERRAR MODAL AL HACER CLIC FUERA
     document.getElementById("modal-producto").addEventListener("click", function(event) {
-        if (event.target === this) {
-            cerrarProducto();
-        }
+        if (event.target === this) cerrarProducto();
     });
 
-    // FUNCIÓN PARA FILTRAR CATEGORÍAS
     function filtrarCategoria(categoriaSeleccionada) {
         const tarjetasProductos = document.querySelectorAll('#productos .tarjeta');
-        
         tarjetasProductos.forEach(tarjeta => {
             const botonVer = tarjeta.querySelector('button');
-            
             if (categoriaSeleccionada === 'Todos') {
                 tarjeta.style.display = 'block';
             } else {
                 const productoId = botonVer.getAttribute('onclick').match(/'([^']+)'/)[1];
                 const producto = productos.find(p => p.id === productoId);
-                
                 if (producto && producto.categoria === categoriaSeleccionada) {
                     tarjeta.style.display = 'block';
                 } else {
@@ -1565,10 +1414,10 @@ HTML_TEMPLATE = """
                 }
             }
         });
-
         document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
     }
 </script>
+
 <!-- BOTÓN FLOTANTE PARA IR AL CARRITO -->
 <a href="#carrito" style="
     position: fixed;
@@ -1589,7 +1438,6 @@ HTML_TEMPLATE = """
     transition: transform 0.2s;
 " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
     <i class="fa-solid fa-cart-shopping"></i>
-    <!-- Aquí mostramos el número de productos en el carrito -->
     <span id="contador-flotante" style="
         position: absolute;
         top: -5px;
