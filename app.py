@@ -479,423 +479,101 @@ HTML_TEMPLATE = """
     </style>
 </head>
 <body>
-<main>
-    <!-- PORTADA CON IMAGEN Y BOTÓN REAL -->
-    <section id="inicio" style="position: relative; width: 100%; text-align: center; padding-bottom: 20px;">
-        <img src="/imagenes/suplementex.jpg" alt="Portada Suplementex" style="width: 100%; height: auto; display: block;">
-        
-        <!-- BOTÓN DORADO REAL DEBAJO DE LA IMAGEN -->
-        <div style="margin-top: -30px; position: relative; z-index: 10;">
-            <a href="#productos" style="
-                display: inline-block;
-                background: linear-gradient(180deg, #f9d976 0%, #e2a12c 100%);
-                color: #000; font-weight: 900; font-size: 18px; padding: 15px 40px;
-                border-radius: 50px; text-decoration: none;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.5); border: 2px solid #fff3c4;
-                transition: transform 0.2s;
-            " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                <i class="fa-solid fa-cart-shopping"></i> Ver Productos
-            </a>
-        </div>
-    </section>
-    </header>   
-    <!-- MENÚ SUPERIOR REAL -->
-    <header style="background: #0a0f18; border-bottom: 1px solid #1b2c45; padding: 10px 0; position: sticky; top: 0; z-index: 100;">
-    <div class="contenedor barra" style="display: flex; justify-content: space-between; align-items: center;">
-        
-        <!-- LOGO -->
-        <a class="logo" href="#inicio" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-            <img src="/imagenes/logo-suplementex.png" alt="Logo" style="height: 55px;">
+<body>
+<!-- 1. BARRA SUPERIOR (Con el diseño de tu foto) -->
+<header style="background: #0e1624; padding: 0;">
+    <div class="contenedor" style="display: flex; justify-content: space-between; align-items: center; min-height: 70px;">
+        <!-- Logo -->
+        <a href="#inicio" style="display: flex; align-items: center;">
+            <img src="/imagenes/logo-suplementex.png" alt="Logo" style="height: 45px;">
         </a>
-
-        <!-- MENÚ -->
+        <!-- Menú -->
         <nav style="display: flex; gap: 25px; align-items: center;">
-            <a href="#inicio" style="color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 2px solid #f9d976; padding-bottom: 5px;">
-                <i class="fa-solid fa-house" style="color: #f9d976; margin-right: 5px;"></i> Inicio
+            <a href="#inicio" style="color: #fff; font-size: 14px; text-decoration: none; border-bottom: 2px solid #d4af37; padding-bottom: 5px;">
+                <i class="fa-solid fa-house" style="color: #d4af37; margin-right: 5px;"></i> Inicio
             </a>
-            <a href="#productos" style="color: #fff; font-size: 14px; font-weight: 500; text-decoration: none;">
-                <i class="fa-solid fa-lock" style="color: #f9d976; margin-right: 5px;"></i> Productos <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px; color: #aab7cc;"></i>
+            <a href="#productos" style="color: #fff; font-size: 14px; text-decoration: none;">
+                <i class="fa-solid fa-lock" style="color: #d4af37; margin-right: 5px;"></i> Productos <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i>
             </a>
-            <a href="#contacto" style="color: #fff; font-size: 14px; font-weight: 500; text-decoration: none;">
-                <i class="fa-solid fa-circle-question" style="color: #f9d976; margin-right: 5px;"></i> Contacto
+            <a href="#contacto" style="color: #fff; font-size: 14px; text-decoration: none;">
+                <i class="fa-solid fa-circle-question" style="color: #d4af37; margin-right: 5px;"></i> Contacto
             </a>
-            <a href="#contacto" style="color: #fff; font-size: 14px; font-weight: 500; text-decoration: none;">
-                <i class="fa-solid fa-circle-exclamation" style="color: #f9d976; margin-right: 5px;"></i> Nosotros
+            <a href="#contacto" style="color: #fff; font-size: 14px; text-decoration: none;">
+                <i class="fa-solid fa-circle-exclamation" style="color: #d4af37; margin-right: 5px;"></i> Nosotros
             </a>
         </nav>
-
-        <!-- ICONOS DERECHA -->
-        <div style="display: flex; gap: 20px; align-items: center;">
+        <!-- Iconos -->
+        <div style="display: flex; gap: 15px; align-items: center;">
             <a href="#productos" style="color: #fff; font-size: 18px;"><i class="fa-solid fa-magnifying-glass"></i></a>
             <a href="#carrito" style="color: #fff; font-size: 18px; position: relative;">
                 <i class="fa-solid fa-bag-shopping"></i>
-                <span id="contador" style="background: #00cfff; color: #031018; border-radius: 50%; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center; font-size: 11px; font-weight: bold; position: absolute; top: -8px; right: -10px;">0</span>
+                <span id="contador" style="background: #00bfff; color: #000; border-radius: 50%; width: 18px; height: 18px; display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: bold; position: absolute; top: -5px; right: -8px;">0</span>
             </a>
         </div>
     </div>
 </header>
-    <!-- CATEGORIAS -->
-    <section id="categorias" style="padding-top: 20px;">
-        <div class="contenedor">
-            <div class="subtitulo">
-                <h2>Categorías principales</h2>
-                <p>Encontrá el suplemento ideal para vos.</p>
+
+<main>
+    <!-- 2. PORTADA (Solo la imagen central, con el botón debajo) -->
+    <section id="inicio" style="position: relative; text-align: center;">
+        <!-- Aquí va la imagen que recortaste -->
+        <img src="/imagenes/suplementex.jpg" alt="Portada" style="width: 100%; display: block;">
+        
+        <!-- Botón Ver Productos (Diseño de tu foto, funcional) -->
+        <div style="margin-top: -25px; position: relative; z-index: 10;">
+            <a href="#productos" style="display: inline-block; background: linear-gradient(180deg, #f9d976 0%, #d4af37 100%); color: #000; font-weight: 900; font-size: 16px; padding: 12px 35px; border-radius: 50px; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.6); border: 2px solid #fff3c4;">
+                <i class="fa-solid fa-cart-shopping"></i> Ver Productos
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. BARRA INFERIOR (Con los 4 iconos dorados exactos) -->
+    <section style="background: #0e1624; padding: 30px 0; border-top: 1px solid #1b2c45;">
+        <div class="contenedor" style="display: grid; grid-template-columns: repeat(4, 1fr); text-align: center;">
+            <div>
+                <i class="fa-solid fa-shield-halved" style="color: #d4af37; font-size: 40px; margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; font-size: 16px; margin: 0;">Compra Segura</h3>
+                <p style="color: #aab7cc; font-size: 12px; margin: 5px 0 0;">Tus datos protegidos</p>
             </div>
-            <div class="rejilla">
-                <div class="tarjeta" onclick="filtrarCategoria('Proteínas')" style="cursor: pointer;">
-                    <i class="fa-solid fa-jar icono"></i><h3>Proteínas</h3><p>Opciones para complementar tu alimentación.</p>
-                </div>
-                <div class="tarjeta" onclick="filtrarCategoria('Creatinas')" style="cursor: pointer;">
-                    <i class="fa-solid fa-cubes icono"></i><h3>Creatinas</h3><p>Productos para acompañar tu entrenamiento.</p>
-                </div>
-                <div class="tarjeta" onclick="filtrarCategoria('Aminoácidos')" style="cursor: pointer;">
-                    <i class="fa-solid fa-capsules icono"></i><h3>Aminoácidos</h3><p>Consultá las opciones disponibles.</p>
-                </div>
-                <div class="tarjeta" onclick="filtrarCategoria('Todos')" style="cursor: pointer; border-color: var(--naranja);">
-                    <i class="fa-solid fa-list icono" style="color: var(--naranja);"></i><h3>Ver Todos</h3><p>Mostrar el catálogo completo.</p>
-                </div>
+            <div>
+                <i class="fa-solid fa-truck-fast" style="color: #d4af37; font-size: 40px; margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; font-size: 16px; margin: 0;">Envíos a todo el País</h3>
+                <p style="color: #aab7cc; font-size: 12px; margin: 5px 0 0;">Rápido y confiable</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-headset" style="color: #d4af37; font-size: 40px; margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; font-size: 16px; margin: 0;">Asesoramiento</h3>
+                <p style="color: #aab7cc; font-size: 12px; margin: 5px 0 0;">Estamos para ayudarte</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-star" style="color: #d4af37; font-size: 40px; margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; font-size: 16px; margin: 0;">Calidad Garantizada</h3>
+                <p style="color: #aab7cc; font-size: 12px; margin: 5px 0 0;">Resultados reales</p>
             </div>
         </div>
     </section>
 
-    <!-- PRODUCTOS -->
-    <section id="productos">
-        <div class="contenedor">
-            <div class="subtitulo">
-                <h2>Productos destacados</h2>
-                <p>Seleccioná un producto para conocer sus presentaciones.</p>
-            </div>
-            <div class="rejilla">
-                {% for producto in productos %}
-                <article class="tarjeta">
-                    <div class="producto-imagen">
-                        {% if producto.imagen %}
-                        <img src="{{ url_for('static', filename=producto.imagen) }}" alt="{{ producto.nombre }}" loading="lazy">
-                        {% else %}
-                        {{ producto.nombre }}
-                        {% endif %}
-                    </div>
-                    <h3>{{ producto.nombre }}</h3>
-                    <p>{{ producto.descripcion }}</p>
-                    <div class="precio">Consultar precio</div>
-                    <button class="boton" type="button" onclick="abrirProducto('{{ producto.id }}')">
-                        Ver producto <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </article>
-                {% endfor %}
-            </div>
-
-            <!-- CARRITO -->
-            <div class="carrito" id="carrito">
-                <h2><i class="fa-solid fa-bag-shopping"></i> Tu selección</h2>
-                <div id="lista-carrito"><p>Todavía no seleccionaste productos.</p></div>
-                <h3 id="total-carrito" class="total-producto">Total: A confirmar</h3>
-                <div class="botones-modal">
-                    <button type="button" class="boton" onclick="enviarWhatsApp('compra')">
-                        <i class="fa-brands fa-whatsapp"></i> Comprar por WhatsApp
-                    </button>
-                    <button type="button" class="boton boton-secundario" onclick="enviarWhatsApp('consulta')">Consultar</button>
-                </div>
-                <p class="nota">Los precios y la disponibilidad se confirman por WhatsApp.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto">
-        <div class="contenedor">
-            <div class="contacto">
-                <h2>¿Necesitás orientación?</h2>
-                <p>Estamos para ayudarte a conocer nuestros productos y resolver tus consultas.</p>
-                <button type="button" class="boton" onclick="enviarOrientacion()">
-                    <i class="fa-brands fa-whatsapp"></i> Necesito orientación
-                </button>
-            </div>
-        </div>
-    </section>
+    <!-- 4. EL RESTO DE TU PÁGINA (Categorías, productos, carrito, contacto) -->
+    <!-- Pega aquí tu sección de categorías, productos, carrito y contacto (como las tenías) -->
+    
 </main>
 
 <footer>
-    <div class="contenedor">
-        <h3>SUPLEMENT<span class="naranja">EX</span></h3>
-        <p>Tu bienestar, a tu ritmo.</p>
-        <p>Asunción, Paraguay</p>
+    <div class="contenedor" style="text-align: center; padding: 20px 0;">
+        <h3>SUPLEMENT<span style="color: #d4af37;">EX</span></h3>
+        <p style="color: #aab7cc; font-size: 12px;">Tu bienestar, a tu ritmo.</p>
     </div>
 </footer>
 
-<!-- VENTANA DE DETALLES DEL PRODUCTO -->
-<div class="modal" id="modal-producto">
-    <div class="modal-contenido">
-        <button class="cerrar-modal" onclick="cerrarProducto()" aria-label="Cerrar">&times;</button>
-        <div id="modal-imagen" class="modal-imagen"></div>
-        <h2 id="modal-nombre"></h2>
-        <p id="modal-categoria"></p>
-        <p id="modal-descripcion"></p>
-        <p id="modal-detalle"></p>
-        <div class="campo">
-            <label for="presentacion">Seleccioná una presentación</label>
-            <select id="presentacion" onchange="actualizarPrecio()"></select>
-        </div>
-        <div class="campo">
-            <label for="cantidad-producto">Cantidad</label>
-            <input type="number" id="cantidad-producto" value="1" min="1" max="99" onchange="actualizarPrecio()">
-        </div>
-        <div class="total-producto" id="precio-modal">Precio: A confirmar</div>
-        <div class="botones-modal">
-            <button type="button" class="boton" onclick="agregarSeleccion()"><i class="fa-solid fa-cart-plus"></i> Agregar a mi selección</button>
-            <button type="button" class="boton boton-secundario" onclick="cerrarProducto()">Cancelar</button>
-        </div>
-    </div>
-</div>
+<!-- VENTANA DE DETALLES DEL PRODUCTO (Modal) -->
+<!-- Pega aquí tu ventana modal como la tenías -->
+
+<!-- BOTÓN FLOTANTE -->
+<!-- Pega aquí tu botón flotante como lo tenías -->
 
 <script>
-    const productos = {{ productos | tojson }};
-    const WHATSAPP_NUMBER = {{ WHATSAPP_NUMBER | tojson }};
-    const WHATSAPP_CONFIGURADO = true;
-
-    let productoActual = null;
-    let carrito = [];
-
-    function formatoPrecio(valor) {
-        return new Intl.NumberFormat("es-PY", { style: "currency", currency: "PYG", maximumFractionDigits: 0 }).format(valor);
-    }
-
-    function abrirProducto(id) {
-        productoActual = productos.find(producto => producto.id === id);
-        if (!productoActual) return;
-
-        document.getElementById("modal-nombre").textContent = productoActual.nombre;
-        document.getElementById("modal-categoria").textContent = productoActual.categoria;
-        document.getElementById("modal-descripcion").textContent = productoActual.descripcion;
-        document.getElementById("modal-detalle").textContent = productoActual.detalle;
-
-        const imagen = document.getElementById("modal-imagen");
-        if (productoActual.imagen) {
-            imagen.innerHTML = "";
-            const img = document.createElement("img");
-            img.src = "/imagenes/" + encodeURIComponent(productoActual.imagen);
-            img.alt = productoActual.nombre;
-            imagen.appendChild(img);
-        } else {
-            imagen.textContent = productoActual.nombre;
-        }
-
-        const selector = document.getElementById("presentacion");
-        selector.innerHTML = "";
-        const presentaciones = productoActual.presentaciones || [];
-        presentaciones.forEach((presentacion, indice) => {
-            const opcion = document.createElement("option");
-            opcion.value = indice;
-            opcion.textContent = presentacion.tamano ? presentacion.tamano : "Presentación a confirmar";
-            selector.appendChild(opcion);
-        });
-
-        if (presentaciones.length === 0) {
-            const opcion = document.createElement("option");
-            opcion.value = "-1";
-            opcion.textContent = "Presentación a confirmar";
-            selector.appendChild(opcion);
-        }
-
-        document.getElementById("cantidad-producto").value = 1;
-        actualizarPrecio();
-        document.getElementById("modal-producto").classList.add("activo");
-    }
-
-    function cerrarProducto() {
-        document.getElementById("modal-producto").classList.remove("activo");
-        productoActual = null;
-    }
-
-    function actualizarPrecio() {
-        if (!productoActual) return;
-        const selector = document.getElementById("presentacion");
-        const indice = Number(selector.value);
-        const cantidad = Math.max(1, Number(document.getElementById("cantidad-producto").value) || 1);
-        const presentacion = productoActual.presentaciones[indice];
-        const precioElemento = document.getElementById("precio-modal");
-
-        if (!presentacion || presentacion.precio === null || presentacion.precio === undefined) {
-            precioElemento.textContent = "Precio: A confirmar";
-            return;
-        }
-        const total = presentacion.precio * cantidad;
-        precioElemento.textContent = "Total: " + formatoPrecio(total);
-    }
-
-    function agregarSeleccion() {
-        if (!productoActual) return;
-        const indice = Number(document.getElementById("presentacion").value);
-        const presentacion = productoActual.presentaciones[indice] || { tamano: "Presentación a confirmar", precio: null };
-        const cantidad = Math.max(1, Number(document.getElementById("cantidad-producto").value) || 1);
-
-        const existente = carrito.find(item => item.id === productoActual.id && item.tamano === (presentacion.tamano || "Presentación a confirmar"));
-
-        if (existente) {
-            existente.cantidad += cantidad;
-        } else {
-            carrito.push({
-                id: productoActual.id,
-                nombre: productoActual.nombre,
-                tamano: presentacion.tamano || "Presentación a confirmar",
-                precio: presentacion.precio,
-                cantidad: cantidad
-            });
-        }
-        actualizarCarrito();
-        cerrarProducto();
-    }
-
-    function actualizarCarrito() {
-        const lista = document.getElementById("lista-carrito");
-        const contador = document.getElementById("contador");
-        const contadorFlotante = document.getElementById("contador-flotante");
-        const totalElemento = document.getElementById("total-carrito");
-        
-        lista.innerHTML = "";
-        let cantidadTotal = 0;
-        let total = 0;
-        let precioPendiente = false;
-
-        if (carrito.length === 0) {
-            lista.innerHTML = "<p>Todavía no seleccionaste productos.</p>";
-            contador.textContent = "0";
-            if(contadorFlotante) contadorFlotante.textContent = "0";
-            totalElemento.textContent = "Total: A confirmar";
-            return;
-        }
-
-        carrito.forEach((item, indice) => {
-            cantidadTotal += item.cantidad;
-            const subtotal = item.precio === null ? null : item.precio * item.cantidad;
-            if (subtotal === null) precioPendiente = true;
-            else total += subtotal;
-
-            const elemento = document.createElement("div");
-            elemento.className = "item-carrito";
-            
-            const informacion = document.createElement("div");
-            informacion.innerHTML = `
-                <strong>${item.nombre}</strong>
-                <p>${item.tamano} | Cantidad: ${item.cantidad}</p>
-                <p>${subtotal === null ? "Precio a confirmar" : formatoPrecio(subtotal)}</p>
-            `;
-
-            const controles = document.createElement("div");
-            controles.className = "cantidad-controles";
-            
-            const disminuir = document.createElement("button");
-            disminuir.textContent = "-";
-            disminuir.onclick = () => cambiarCantidad(indice, -1);
-
-            const aumentar = document.createElement("button");
-            aumentar.textContent = "+";
-            aumentar.onclick = () => cambiarCantidad(indice, 1);
-
-            const eliminar = document.createElement("button");
-            eliminar.textContent = "Eliminar";
-            eliminar.className = "eliminar";
-            eliminar.onclick = () => eliminarProducto(indice);
-
-            controles.appendChild(disminuir);
-            controles.appendChild(aumentar);
-            controles.appendChild(eliminar);
-            elemento.appendChild(informacion);
-            elemento.appendChild(controles);
-            lista.appendChild(elemento);
-        });
-
-        contador.textContent = cantidadTotal;
-        if(contadorFlotante) contadorFlotante.textContent = cantidadTotal;
-
-        if (precioPendiente) {
-            totalElemento.textContent = "Total: " + formatoPrecio(total) + " + precios a confirmar";
-        } else {
-            totalElemento.textContent = "Total: " + formatoPrecio(total);
-        }
-    }
-
-    function cambiarCantidad(indice, cambio) {
-        carrito[indice].cantidad += cambio;
-        if (carrito[indice].cantidad <= 0) carrito.splice(indice, 1);
-        actualizarCarrito();
-    }
-
-    function eliminarProducto(indice) {
-        carrito.splice(indice, 1);
-        actualizarCarrito();
-    }
-
-    function prepararMensaje(tipo) {
-        // AQUÍ ESTÁ EL ARREGLO: Usamos \\n en lugar de \n
-        let mensaje = tipo === "compra" ? "Hola, quiero realizar un pedido en SUPLEMENTEX.\\n\\n" : "Hola, quisiera consultar sobre estos productos de SUPLEMENTEX.\\n\\n";
-        carrito.forEach(item => {
-            mensaje += "- " + item.nombre + "\\n  Presentación: " + item.tamano + "\\n  Cantidad: " + item.cantidad;
-            if (item.precio !== null) mensaje += "\\n  Subtotal: " + formatoPrecio(item.precio * item.cantidad);
-            else mensaje += "\\n  Precio: A confirmar";
-            mensaje += "\\n\\n";
-        });
-        mensaje += "Quedo atento/a. ¡Gracias!";
-        return mensaje;
-    }
-
-    function enviarWhatsApp(tipo) {
-        if (carrito.length === 0) {
-            alert("Primero agregá algún producto a tu selección.");
-            return;
-        }
-        const mensaje = prepararMensaje(tipo);
-        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje);
-        window.location.href = url; 
-    }
-
-    function enviarOrientacion() {
-        const mensaje = "Hola, necesito orientación sobre los productos de SUPLEMENTEX.";
-        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensaje);
-        window.location.href = url;
-    }
-
-    document.getElementById("modal-producto").addEventListener("click", function(event) {
-        if (event.target === this) cerrarProducto();
-    });
-
-    function filtrarCategoria(categoriaSeleccionada) {
-        const tarjetasProductos = document.querySelectorAll('#productos .tarjeta');
-        tarjetasProductos.forEach(tarjeta => {
-            const botonVer = tarjeta.querySelector('button');
-            if (!botonVer) return;
-            
-            if (categoriaSeleccionada === 'Todos') {
-                tarjeta.style.display = 'block';
-            } else {
-                const productoId = botonVer.getAttribute('onclick').match(/'([^']+)'/)[1];
-                const producto = productos.find(p => p.id === productoId);
-                if (producto && producto.categoria === categoriaSeleccionada) {
-                    tarjeta.style.display = 'block';
-                } else {
-                    tarjeta.style.display = 'none';
-                }
-            }
-        });
-        document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
-    }
+    // Pega aquí todo tu JavaScript (el mismo que ya tienes)
 </script>
-
-<!-- BOTÓN FLOTANTE PARA IR AL CARRITO -->
-<a href="#carrito" style="
-    position: fixed; bottom: 30px; right: 30px; background: var(--naranja);
-    color: white; width: 60px; height: 60px; border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    z-index: 1000; text-decoration: none; transition: transform 0.2s;
-" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-    <i class="fa-solid fa-cart-shopping"></i>
-    <span id="contador-flotante" style="
-        position: absolute; top: -5px; right: -5px; background: #00cfff;
-        color: #000; font-size: 14px; font-weight: bold; width: 25px; height: 25px;
-        border-radius: 50%; display: flex; justify-content: center; align-items: center;
-    ">0</span>
-</a>
 </body>
 </html>
 """
