@@ -422,7 +422,10 @@ HTML_TEMPLATE = """
         .icono-header:hover { color: var(--azul); }
         #contador { display: inline-flex; background: var(--azul); color: #031018; border-radius: 50%; min-width: 23px; height: 23px; justify-content: center; align-items: center; font-size: 12px; font-weight: 900; }
         
-        .hero { position: relative; width: 100%; }
+        .hero { pposition: relative;
+            width: 100%;
+            height: auto; /* Importante para que no quede espacio abajo */
+            background-size: cover; }
         .etiqueta { color: var(--azul); font-weight: 700; letter-spacing: 1px; font-size: 13px; }
         h1 { font-size: clamp(38px, 5vw, 62px); line-height: 1.08; margin: 18px 0; }
         h2 { font-size: 30px; margin-top: 0; margin-bottom: 10px; }
@@ -514,12 +517,11 @@ HTML_TEMPLATE = """
 </header>
 
 <main>
-    <!-- 2. PORTADA (Solo la imagen central, con el botón debajo) -->
-    <section id="inicio" style="position: relative; text-align: center;">
-        <!-- Aquí va la imagen que recortaste -->
-        <img src="/imagenes/suplementex.jpg" alt="Portada" style="width: 100%; display: block;">
+    <!-- 1. PORTADA -->
+    <section id="inicio" style="position: relative; text-align: center; padding-bottom: 20px;">
+        <img src="/imagenes/suplementex.jpg" alt="Portada" style="width: 100%; height: auto; display: block;">
         
-        <!-- Botón Ver Productos (Diseño de tu foto, funcional) -->
+        <!-- BOTÓN DORADO -->
         <div style="margin-top: -25px; position: relative; z-index: 10;">
             <a href="#productos" style="display: inline-block; background: linear-gradient(180deg, #f9d976 0%, #d4af37 100%); color: #000; font-weight: 900; font-size: 16px; padding: 12px 35px; border-radius: 50px; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.6); border: 2px solid #fff3c4;">
                 <i class="fa-solid fa-cart-shopping"></i> Ver Productos
@@ -527,35 +529,111 @@ HTML_TEMPLATE = """
         </div>
     </section>
 
-    <!-- 3. BARRA INFERIOR (Con los 4 iconos dorados exactos) -->
-    <section style="background: #0e1624; padding: 30px 0; border-top: 1px solid #1b2c45;">
+    <!-- 2. BARRA DE BENEFICIOS -->
+    <section style="background: #0a0f18; padding: 30px 0; border-top: 1px solid #1b2c45; border-bottom: 1px solid #1b2c45;">
         <div class="contenedor" style="display: grid; grid-template-columns: repeat(4, 1fr); text-align: center;">
             <div>
-                <i class="fa-solid fa-shield-halved" style="color: #d4af37; font-size: 40px; margin-bottom: 10px;"></i>
+                <i class="fa-solid fa-shield-halved" style="color: #d4af37; font-size: 35px; margin-bottom: 10px;"></i>
                 <h3 style="color: #fff; font-size: 16px; margin: 0;">Compra Segura</h3>
                 <p style="color: #aab7cc; font-size: 12px; margin: 5px 0 0;">Tus datos protegidos</p>
             </div>
             <div>
-                <i class="fa-solid fa-truck-fast" style="color: #d4af37; font-size: 40px; margin-bottom: 10px;"></i>
+                <i class="fa-solid fa-truck-fast" style="color: #d4af37; font-size: 35px; margin-bottom: 10px;"></i>
                 <h3 style="color: #fff; font-size: 16px; margin: 0;">Envíos a todo el País</h3>
                 <p style="color: #aab7cc; font-size: 12px; margin: 5px 0 0;">Rápido y confiable</p>
             </div>
             <div>
-                <i class="fa-solid fa-headset" style="color: #d4af37; font-size: 40px; margin-bottom: 10px;"></i>
+                <i class="fa-solid fa-headset" style="color: #d4af37; font-size: 35px; margin-bottom: 10px;"></i>
                 <h3 style="color: #fff; font-size: 16px; margin: 0;">Asesoramiento</h3>
                 <p style="color: #aab7cc; font-size: 12px; margin: 5px 0 0;">Estamos para ayudarte</p>
             </div>
             <div>
-                <i class="fa-solid fa-star" style="color: #d4af37; font-size: 40px; margin-bottom: 10px;"></i>
+                <i class="fa-solid fa-star" style="color: #d4af37; font-size: 35px; margin-bottom: 10px;"></i>
                 <h3 style="color: #fff; font-size: 16px; margin: 0;">Calidad Garantizada</h3>
                 <p style="color: #aab7cc; font-size: 12px; margin: 5px 0 0;">Resultados reales</p>
             </div>
         </div>
     </section>
 
-    <!-- 4. EL RESTO DE TU PÁGINA (Categorías, productos, carrito, contacto) -->
-    <!-- Pega aquí tu sección de categorías, productos, carrito y contacto (como las tenías) -->
-    
+    <!-- 3. CATEGORÍAS (Las tarjetas de colores) -->
+    <section id="categorias" style="padding-top: 30px;">
+        <div class="contenedor">
+            <div class="subtitulo">
+                <h2>Categorías principales</h2>
+                <p>Encontrá el suplemento ideal para vos.</p>
+            </div>
+            <div class="rejilla">
+                <div class="tarjeta" onclick="filtrarCategoria('Proteínas')" style="cursor: pointer;">
+                    <i class="fa-solid fa-jar icono"></i><h3>Proteínas</h3><p>Opciones para complementar tu alimentación.</p>
+                </div>
+                <div class="tarjeta" onclick="filtrarCategoria('Creatinas')" style="cursor: pointer;">
+                    <i class="fa-solid fa-cubes icono"></i><h3>Creatinas</h3><p>Productos para acompañar tu entrenamiento.</p>
+                </div>
+                <div class="tarjeta" onclick="filtrarCategoria('Aminoácidos')" style="cursor: pointer;">
+                    <i class="fa-solid fa-capsules icono"></i><h3>Aminoácidos</h3><p>Consultá las opciones disponibles.</p>
+                </div>
+                <div class="tarjeta" onclick="filtrarCategoria('Todos')" style="cursor: pointer; border-color: var(--naranja);">
+                    <i class="fa-solid fa-list icono" style="color: var(--naranja);"></i><h3>Ver Todos</h3><p>Mostrar el catálogo completo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PRODUCTOS (¡Aquí vuelven a aparecer!) -->
+    <section id="productos">
+        <div class="contenedor">
+            <div class="subtitulo">
+                <h2>Productos destacados</h2>
+                <p>Seleccioná un producto para conocer sus presentaciones.</p>
+            </div>
+            <div class="rejilla">
+                {% for producto in productos %}
+                <article class="tarjeta">
+                    <div class="producto-imagen">
+                        {% if producto.imagen %}
+                        <img src="{{ url_for('static', filename=producto.imagen) }}" alt="{{ producto.nombre }}" loading="lazy">
+                        {% else %}
+                        {{ producto.nombre }}
+                        {% endif %}
+                    </div>
+                    <h3>{{ producto.nombre }}</h3>
+                    <p>{{ producto.descripcion }}</p>
+                    <div class="precio">Consultar precio</div>
+                    <button class="boton" type="button" onclick="abrirProducto('{{ producto.id }}')">
+                        Ver producto <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </article>
+                {% endfor %}
+            </div>
+
+            <!-- 5. CARRITO -->
+            <div class="carrito" id="carrito">
+                <h2><i class="fa-solid fa-bag-shopping"></i> Tu selección</h2>
+                <div id="lista-carrito"><p>Todavía no seleccionaste productos.</p></div>
+                <h3 id="total-carrito" class="total-producto">Total: A confirmar</h3>
+                <div class="botones-modal">
+                    <button type="button" class="boton" onclick="enviarWhatsApp('compra')">
+                        <i class="fa-brands fa-whatsapp"></i> Comprar por WhatsApp
+                    </button>
+                    <button type="button" class="boton boton-secundario" onclick="enviarWhatsApp('consulta')">Consultar</button>
+                </div>
+                <p class="nota">Los precios y la disponibilidad se confirman por WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CONTACTO -->
+    <section id="contacto">
+        <div class="contenedor">
+            <div class="contacto">
+                <h2>¿Necesitás orientación?</h2>
+                <p>Estamos para ayudarte a conocer nuestros productos y resolver tus consultas.</p>
+                <button type="button" class="boton" onclick="enviarOrientacion()">
+                    <i class="fa-brands fa-whatsapp"></i> Necesito orientación
+                </button>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer>
