@@ -482,7 +482,6 @@ HTML_TEMPLATE = """
     </style>
 </head>
 <body>
-<body>
 <!-- 1. BARRA SUPERIOR (Con el diseño de tu foto) -->
 <header style="background: #0e1624; padding: 0;">
     <div class="contenedor" style="display: flex; justify-content: space-between; align-items: center; min-height: 70px;">
