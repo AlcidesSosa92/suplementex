@@ -6,6 +6,7 @@ import urllib.error
 
 app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 
+
 # ============================================================
 # CATALOGO DE PRODUCTOS
 # ============================================================ 
@@ -422,7 +423,7 @@ HTML_TEMPLATE = """
         .icono-header:hover { color: var(--azul); }
         #contador { display: inline-flex; background: var(--azul); color: #031018; border-radius: 50%; min-width: 23px; height: 23px; justify-content: center; align-items: center; font-size: 12px; font-weight: 900; }
         
-        .hero { pposition: relative;
+        .hero {position: relative;
             width: 100%;
             height: auto; /* Importante para que no quede espacio abajo */
             background-size: cover; }
@@ -585,7 +586,7 @@ HTML_TEMPLATE = """
                 <h2>Productos destacados</h2>
                 <p>Seleccioná un producto para conocer sus presentaciones.</p>
             </div>
-            <div class="rejilla">
+            <div class="rejilla" id="lista-productos">
                 {% for producto in productos %}
                 <article class="tarjeta">
                     <div class="producto-imagen">
@@ -643,13 +644,193 @@ HTML_TEMPLATE = """
 </footer>
 
 <!-- VENTANA DE DETALLES DEL PRODUCTO (Modal) -->
-<!-- Pega aquí tu ventana modal como la tenías -->
+<div class="modal" id="modal-producto">
+    <div class="modal-contenido">
+        <button class="cerrar-modal" onclick="cerrarModal()">&times;</button>
+        <div class="modal-imagen" id="modal-imagen"></div>
+        <h2 id="modal-nombre"></h2>
+        <p id="modal-categoria" style="color: var(--azul); font-weight: 700; margin-top: -10px;"></p>
+        <p id="modal-descripcion"></p>
+        <div class="campo">
+            <label for="modal-presentacion">Elegí una presentación:</label>
+            <select id="modal-presentacion" onchange="actualizarPrecioModal()"></select>
+        </div>
+        <div class="campo">
+            <label for="modal-cantidad">Cantidad:</label>
+            <input type="number" id="modal-cantidad" value="1" min="1">
+        </div>
+        <div id="modal-detalle" style="font-size: 14px; color: #aab7cc; background: #080d18; padding: 15px; border-radius: 10px; margin: 15px 0; line-height: 1.6;"></div>
+        <div class="total-producto" id="modal-total">Consultar precio</div>
+        <div class="botones-modal">
+            <button type="button" class="boton" onclick="agregarAlCarrito()">
+                <i class="fa-solid fa-cart-plus"></i> Agregar
+            </button>
+            <button type="button" class="boton boton-secundario" onclick="consultarProductoWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Consultar
+            </button>
+        </div>
+    </div>
+</div>
 
 <!-- BOTÓN FLOTANTE -->
-<!-- Pega aquí tu botón flotante como lo tenías -->
+<a href="https://wa.me/{{ WHATSAPP_NUMBER }}" target="_blank" class="whatsapp-flotante" title="Escríbenos por WhatsApp" style="position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 6px 20px rgba(37, 211, 102, .5); z-index: 99; transition: transform .2s;">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
 
 <script>
-    // Pega aquí todo tu JavaScript (el mismo que ya tienes)
+    const WHATSAPP_NUMBER = "{{ WHATSAPP_NUMBER }}";
+    const PRODUCTOS = {{ productos|tojson }};
+    let productoActual = null;
+    let carrito = JSON.parse(localStorage.getItem('suplementex_carrito') || '[]');
+
+    function abrirProducto(id) {
+        const producto = PRODUCTOS.find(p => p.id === id);
+        if (!producto) return;
+        productoActual = producto;
+
+        document.getElementById('modal-imagen').innerHTML = producto.imagen
+            ? `<img src="/imagenes/${producto.imagen}" alt="${producto.nombre}">`
+            : producto.nombre;
+        document.getElementById('modal-nombre').textContent = producto.nombre;
+        document.getElementById('modal-categoria').textContent = producto.categoria;
+        document.getElementById('modal-descripcion').textContent = producto.descripcion;
+        document.getElementById('modal-detalle').textContent = producto.detalle || '';
+        document.getElementById('modal-cantidad').value = 1;
+
+        const select = document.getElementById('modal-presentacion');
+        select.innerHTML = '';
+        producto.presentaciones.forEach((pres, i) => {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = pres.tamano + (pres.precio ? ` - ${pres.precio}` : '');
+            select.appendChild(opt);
+        });
+
+        actualizarPrecioModal();
+        document.getElementById('modal-producto').classList.add('activo');
+    }
+
+    function cerrarModal() {
+        document.getElementById('modal-producto').classList.remove('activo');
+    }
+
+    function actualizarPrecioModal() {
+        const idx = document.getElementById('modal-presentacion').value;
+        const pres = productoActual.presentaciones[idx];
+        document.getElementById('modal-total').textContent = pres.precio ? `${pres.precio}` : 'Consultar precio';
+    }
+
+    function agregarAlCarrito() {
+        const idx = document.getElementById('modal-presentacion').value;
+        const pres = productoActual.presentaciones[idx];
+        const cantidad = parseInt(document.getElementById('modal-cantidad').value) || 1;
+
+        const itemExistente = carrito.find(i => i.id === productoActual.id && i.presentacion === pres.tamano);
+        if (itemExistente) {
+            itemExistente.cantidad += cantidad;
+        } else {
+            carrito.push({
+                id: productoActual.id,
+                nombre: productoActual.nombre,
+                presentacion: pres.tamano,
+                precio: pres.precio || 'Consultar',
+                cantidad: cantidad
+            });
+        }
+
+        localStorage.setItem('suplementex_carrito', JSON.stringify(carrito));
+        cerrarModal();
+        renderCarrito();
+        alert('✅ Producto agregado al carrito');
+    }
+
+    function renderCarrito() {
+        const lista = document.getElementById('lista-carrito');
+        const contador = document.getElementById('contador');
+
+        if (carrito.length === 0) {
+            lista.innerHTML = '<p>Todavía no seleccionaste productos.</p>';
+            contador.textContent = '0';
+            return;
+        }
+
+        lista.innerHTML = carrito.map((item, i) => `
+            <div class="item-carrito">
+                <div style="flex: 1;">
+                    <strong>${item.nombre}</strong><br>
+                    <small style="color: #aab7cc;">${item.presentacion}</small><br>
+                    <span style="color: var(--azul);">${item.precio === 'Consultar' ? 'Consultar precio' : item.precio}</span>
+                </div>
+                <div class="cantidad-controles">
+                    <button onclick="cambiarCantidad(${i}, -1)">−</button>
+                    <span>${item.cantidad}</span>
+                    <button onclick="cambiarCantidad(${i}, 1)">+</button>
+                </div>
+                <button class="eliminar" onclick="eliminarItem(${i})"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        `).join('');
+
+        contador.textContent = carrito.reduce((sum, i) => sum + i.cantidad, 0);
+    }
+
+    function cambiarCantidad(i, delta) {
+        carrito[i].cantidad += delta;
+        if (carrito[i].cantidad < 1) carrito[i].cantidad = 1;
+        localStorage.setItem('suplementex_carrito', JSON.stringify(carrito));
+        renderCarrito();
+    }
+
+    function eliminarItem(i) {
+        carrito.splice(i, 1);
+        localStorage.setItem('suplementex_carrito', JSON.stringify(carrito));
+        renderCarrito();
+    }
+
+    function enviarWhatsApp(tipo) {
+        if (carrito.length === 0) {
+            alert('⚠️ Primero agregá productos al carrito.');
+            return;
+        }
+        let mensaje = tipo === 'compra' ? '🛒 *NUEVO PEDIDO - SUPLEMENTEX*%0A%0A' : '💬 *CONSULTA DE PRODUCTOS - SUPLEMENTEX*%0A%0A';
+        carrito.forEach((item, i) => {
+            mensaje += `*${i + 1}.* ${item.nombre}%0A`;
+            mensaje += `   📦 Presentación: ${item.presentacion}%0A`;
+            mensaje += `   🔢 Cantidad: ${item.cantidad}%0A`;
+            mensaje += `   💰 Precio: ${item.precio === 'Consultar' ? 'A confirmar' : item.precio}%0A%0A`;
+        });
+        mensaje += tipo === 'compra' ? '✅ Quiero confirmar este pedido. ¡Gracias!' : '❓ Necesito más información.';
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${mensaje}`, '_blank');
+    }
+
+    function consultarProductoWhatsApp() {
+        const idx = document.getElementById('modal-presentacion').value;
+        const pres = productoActual.presentaciones[idx];
+        const msg = `💬 *CONSULTA - SUPLEMENTEX*%0A%0A*Producto:* ${productoActual.nombre}%0A*Presentación:* ${pres.tamano}%0A%0A¿Me pueden dar más información y precio?`;
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+    }
+
+    function enviarOrientacion() {
+        const msg = '👋 Hola, necesito orientación para elegir un suplemento. ¿Me pueden ayudar?';
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function filtrarCategoria(cat) {
+        const cards = document.querySelectorAll('#lista-productos .tarjeta');
+        cards.forEach(card => {
+            if (cat === 'Todos' || card.dataset.categoria === cat) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('modal-producto').addEventListener('click', function(e) {
+        if (e.target === this) cerrarModal();
+    });
+
+    renderCarrito();
 </script>
 </body>
 </html>
