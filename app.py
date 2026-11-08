@@ -488,7 +488,7 @@ HTML_TEMPLATE = """
     <div class="contenedor" style="display: flex; justify-content: space-between; align-items: center; min-height: 70px;">
         <!-- Logo -->
         <a href="#inicio" style="display: flex; align-items: center;">
-            <img src="/imagenes/logo-suplementex.png" alt="Logo" style="height: 45px;">
+            <img src="/imagenes/logo-suplementex2.png" alt="Logo" style="height: 45px;">
         </a>
         <!-- Menú -->
         <nav style="display: flex; gap: 25px; align-items: center;">
