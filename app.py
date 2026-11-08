@@ -498,7 +498,42 @@ HTML_TEMPLATE = """
             </a>
         </div>
     </section>
+    </header>   
+    <!-- MENÚ SUPERIOR REAL -->
+    <header style="background: #0a0f18; border-bottom: 1px solid #1b2c45; padding: 10px 0; position: sticky; top: 0; z-index: 100;">
+    <div class="contenedor barra" style="display: flex; justify-content: space-between; align-items: center;">
+        
+        <!-- LOGO -->
+        <a class="logo" href="#inicio" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+            <img src="/imagenes/logo-suplementex.png" alt="Logo" style="height: 55px;">
+        </a>
 
+        <!-- MENÚ -->
+        <nav style="display: flex; gap: 25px; align-items: center;">
+            <a href="#inicio" style="color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; border-bottom: 2px solid #f9d976; padding-bottom: 5px;">
+                <i class="fa-solid fa-house" style="color: #f9d976; margin-right: 5px;"></i> Inicio
+            </a>
+            <a href="#productos" style="color: #fff; font-size: 14px; font-weight: 500; text-decoration: none;">
+                <i class="fa-solid fa-lock" style="color: #f9d976; margin-right: 5px;"></i> Productos <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px; color: #aab7cc;"></i>
+            </a>
+            <a href="#contacto" style="color: #fff; font-size: 14px; font-weight: 500; text-decoration: none;">
+                <i class="fa-solid fa-circle-question" style="color: #f9d976; margin-right: 5px;"></i> Contacto
+            </a>
+            <a href="#contacto" style="color: #fff; font-size: 14px; font-weight: 500; text-decoration: none;">
+                <i class="fa-solid fa-circle-exclamation" style="color: #f9d976; margin-right: 5px;"></i> Nosotros
+            </a>
+        </nav>
+
+        <!-- ICONOS DERECHA -->
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <a href="#productos" style="color: #fff; font-size: 18px;"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#carrito" style="color: #fff; font-size: 18px; position: relative;">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="contador" style="background: #00cfff; color: #031018; border-radius: 50%; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center; font-size: 11px; font-weight: bold; position: absolute; top: -8px; right: -10px;">0</span>
+            </a>
+        </div>
+    </div>
+</header>
     <!-- CATEGORIAS -->
     <section id="categorias" style="padding-top: 20px;">
         <div class="contenedor">
