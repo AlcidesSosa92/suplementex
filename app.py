@@ -54,8 +54,8 @@ PRODUCTOS = [ {
         "detalle": "Peso líquido: 907g (2 lb). Beneficios: Aporta 24g de proteína, 4.6g de BCAA y 4g de glutamina por porción. Favorece la recuperación muscular, suma a tu proteína diaria y mantiene la masa muscular. Libre de gluten. Modo de uso: Mezclar 1 medida con agua o leche.",
         "imagen": "Classic-Whey-Protein.jpg",
         "presentaciones": [{"tamano": "907 g (Sabor Vainilla)", "precio": None}]
-    }  
-        {
+    },
+      {
         "id": "Creatina-Monohidratada-Pura",
         "nombre": "Creatina Monohidratada 100% Pura (Sabor Neutro)",
         "categoria": "Creatinas",
