@@ -10,7 +10,52 @@ app = Flask(__name__, static_folder="imagenes", static_url_path="/imagenes")
 # ============================================================
 # CATALOGO DE PRODUCTOS
 # ============================================================ 
-PRODUCTOS = [  {
+PRODUCTOS = [ {
+        "id": "Citrato-Magnesio-450g",
+        "nombre": "Citrato de Magnesio 450g (180 Porciones)",
+        "categoria": "Minerales",
+        "descripcion": "Citrato de magnesio en polvo de alta calidad en presentación de 450g. Ayuda a mejorar la función muscular y nerviosa, reduce los calambres y la fatiga, y favorece un descanso reparador.",
+        "detalle": "Peso líquido: 450g (180 porciones). Beneficios: Aporta 300mg de magnesio por porción, ayuda a la función muscular y nerviosa, reduce calambres y fatiga, y favorece el descanso. Sin gluten. Modo de uso: Disolver la porción indicada en agua o tu bebida favorita.",
+        "imagen": "Citrato-Magnesio-450g.jpg",
+        "presentaciones": [{"tamano": "450 g (180 porciones)", "precio": None}]
+    },
+    {
+        "id": "Citrato-Magnesio-150g-SinB6",
+        "nombre": "Citrato de Magnesio 150g (60 Porciones)",
+        "categoria": "Minerales",
+        "descripcion": "Citrato de magnesio en polvo, presentación de 150g. Ideal para mantener la función muscular y nerviosa, reducir la fatiga y mejorar el descanso diario.",
+        "detalle": "Peso líquido: 150g (60 porciones). Beneficios: Aporta 300mg de magnesio por porción, ayuda a la función muscular y nerviosa, reduce calambres y fatiga, y favorece el descanso. Sin gluten. Modo de uso: Disolver la porción indicada en agua o tu bebida favorita.",
+        "imagen": "Citrato-Magnesio-150g-SinB6.jpg",
+        "presentaciones": [{"tamano": "150 g (60 porciones)", "precio": None}]
+    },
+    {
+        "id": "Citrato-Magnesio-150g-ConB6",
+        "nombre": "Citrato de Magnesio con Vitamina B6 150g",
+        "categoria": "Minerales",
+        "descripcion": "Fórmula avanzada de citrato de magnesio en polvo con vitamina B6. Presentación de 150g, ideal para el rendimiento físico, la función nerviosa y el descanso.",
+        "detalle": "Peso líquido: 150g. Beneficios: Aporta 200mg de magnesio y 2.5mg de vitamina B6 por porción, mejora la función muscular y nerviosa, reduce calambres y fatiga, y favorece el descanso. Sin azúcar añadida, sin gluten. Modo de uso: Disolver una porción en agua.",
+        "imagen": "Citrato-Magnesio-150g-ConB6.jpg",
+        "presentaciones": [{"tamano": "150 g (Con Vitamina B6)", "precio": None}]
+    },
+    {
+        "id": "Optimus-Collagen",
+        "nombre": "Optimus Collagen Hidrolizado (Sabor Fresa)",
+        "categoria": "Colágenos",
+        "descripcion": "Colágeno hidrolizado en polvo con sabor a fresa, enriquecido con vitamina C. Ayuda a mantener la salud articular, la firmeza de la piel y la salud de huesos y tendones.",
+        "detalle": "Peso líquido: 240g (21 porciones). Beneficios: Aporta 10g de colágeno hidrolizado y 500mg de vitamina C por porción. Contribuye a la salud articular, piel firme y elástica, y fortalece huesos y tendones. Sin gluten. Modo de uso: Mezclar una porción (1 scoop) con agua.",
+        "imagen": "Optimus-Collagen.jpg",
+        "presentaciones": [{"tamano": "240 g (Sabor Fresa)", "precio": None}]
+    },
+    {
+        "id": "Classic-Whey-Protein",
+        "nombre": "Classic Whey Protein (Sabor Vainilla)",
+        "categoria": "Proteínas",
+        "descripcion": "Proteína de suero de leche en polvo, sabor vainilla. Ideal para la recuperación muscular, aumentar tu ingesta diaria de proteínas y mantener la masa muscular.",
+        "detalle": "Peso líquido: 907g (2 lb). Beneficios: Aporta 24g de proteína, 4.6g de BCAA y 4g de glutamina por porción. Favorece la recuperación muscular, suma a tu proteína diaria y mantiene la masa muscular. Libre de gluten. Modo de uso: Mezclar 1 medida con agua o leche.",
+        "imagen": "Classic-Whey-Protein.jpg",
+        "presentaciones": [{"tamano": "907 g (Sabor Vainilla)", "precio": None}]
+    }  
+        {
         "id": "Creatina-Monohidratada-Pura",
         "nombre": "Creatina Monohidratada 100% Pura (Sabor Neutro)",
         "categoria": "Creatinas",
