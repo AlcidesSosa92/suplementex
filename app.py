@@ -488,9 +488,9 @@ HTML_TEMPLATE = """
         .tarjeta { min-width: 0; background: linear-gradient(155deg, #111d31, #080d18); border: 1px solid var(--borde); border-radius: 16px; padding: 22px; transition: .2s; }
         .tarjeta:hover { transform: translateY(-5px); border-color: var(--azul); box-shadow: 0 12px 30px #0005; }
         .icono { color: var(--azul); font-size: 32px; margin-bottom: 15px; }
-        .producto-imagen { 
+                .producto-imagen { 
+        width: 100%;
         height: auto; 
-        min-height: 220px; 
         background: #080b12; 
         border: 1px solid rgba(0,207,255,.12); 
         border-radius: 12px; 
@@ -499,36 +499,36 @@ HTML_TEMPLATE = """
         justify-content: center; 
         overflow: hidden; 
         margin-bottom: 18px; 
-        padding: 15px; 
+        padding: 0; /* IMPORTANTE: quitamos el padding para que la foto pegue a los bordes */
         }
         .producto-imagen img { 
         width: 100%; 
-        height: 250px; 
-        object-fit: contain; 
+        height: auto; 
+        object-fit: cover; /* IMPORTANTE: hace que la foto llene todo el recuadro */
+        display: block;
         }
-        .precio { color: var(--azul); font-size: 19px; font-weight: 900; margin: 15px 0; }
-        .contacto { background: linear-gradient(110deg, #101b30, #111726); border: 1px solid var(--borde); border-radius: 20px; padding: 30px; text-align: center; }
-        footer { background: #06080d; border-top: 1px solid var(--borde); padding: 30px 0; text-align: center; }
-
         .modal { 
         display: none; 
         position: fixed; 
-        top: 0; left: 0; right: 0; bottom: 0; /* Fuerza a cubrir toda la pantalla */
-        width: 100%; 
-        height: 100%; 
-        z-index: 9999; /* Asegura que esté por encima de todo */
-        background: rgba(0,0,0,.90); /* Fondo más oscuro */
+        top: 0 !important; 
+        left: 0 !important; 
+        right: 0 !important; 
+        bottom: 0 !important; 
+        width: 100vw !important; 
+        height: 100vh !important; 
+        z-index: 99999 !important; 
+        background: rgba(0, 0, 0, 0.95) !important; 
         justify-content: center; 
         align-items: flex-start; 
         padding: 15px; 
         overflow-y: auto; 
-        -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
+        -webkit-overflow-scrolling: touch; 
         }
         .modal.activo { display: flex; }
         .modal-contenido { 
         width: 100%; 
         max-width: 650px; 
-        max-height: 95vh; 
+        max-height: 90vh; /* Un poquito menos para que se vea el borde */
         overflow-y: auto; 
         background: #0c1322; 
         border: 1px solid var(--azul); 
@@ -536,7 +536,7 @@ HTML_TEMPLATE = """
         padding: 25px; 
         box-shadow: 0 20px 60px #000a; 
         position: relative; 
-        margin: auto; /* Centra el contenido */
+        margin: auto; 
         }
         .cerrar-modal { 
         position: absolute; 
@@ -547,10 +547,12 @@ HTML_TEMPLATE = """
         color: white; 
         font-size: 26px; 
         cursor: pointer; 
+        z-index: 10;
         }
         .modal-imagen { 
         width: 100%;
-        height: 300px; /* Altura grande para que se vea bien en celular */
+        height: auto; /* Dejamos que la imagen defina el alto */
+        max-height: 50vh; 
         background: #080b12; 
         border-radius: 12px; 
         display: flex; 
