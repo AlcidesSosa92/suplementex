@@ -492,7 +492,7 @@ HTML_TEMPLATE = """
         width: 100%; 
         height: 100%; 
         object-fit: cover; 
-        transform: scale(1.35); /* Hace un zoom del 35% al producto */
+        transform: scale(1.15); /* Baja el zoom para que no se corte el texto  */
         transition: transform 0.3s ease;
         display: block;
         }
@@ -951,4 +951,3 @@ def home():
 if __name__ == "__main__":
     print("SUPLEMENTEX disponible en http://127.0.0.1:5000/")
     app.run(debug=True, port=5000)
-
