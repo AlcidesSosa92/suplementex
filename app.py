@@ -488,23 +488,12 @@ HTML_TEMPLATE = """
         .tarjeta { min-width: 0; background: linear-gradient(155deg, #111d31, #080d18); border: 1px solid var(--borde); border-radius: 16px; padding: 22px; transition: .2s; }
         .tarjeta:hover { transform: translateY(-5px); border-color: var(--azul); box-shadow: 0 12px 30px #0005; }
         .icono { color: var(--azul); font-size: 32px; margin-bottom: 15px; }
-                .producto-imagen { 
-        width: 100%;
-        height: auto; 
-        background: #080b12; 
-        border: 1px solid rgba(0,207,255,.12); 
-        border-radius: 12px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        overflow: hidden; 
-        margin-bottom: 18px; 
-        padding: 0; /* IMPORTANTE: quitamos el padding para que la foto pegue a los bordes */
-        }
         .producto-imagen img { 
         width: 100%; 
-        height: auto; 
-        object-fit: cover; /* IMPORTANTE: hace que la foto llene todo el recuadro */
+        height: 100%; 
+        object-fit: cover; 
+        transform: scale(1.35); /* Hace un zoom del 35% al producto */
+        transition: transform 0.3s ease;
         display: block;
         }
         .modal { 
