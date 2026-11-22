@@ -19,7 +19,7 @@ PRODUCTOS = [ {
         "imagen": "Citrato-Magnesio-450g.jpg",
         "presentaciones": [{"tamano": "450 g (180 porciones)", "precio": None}]
     },
-    {
+        {
         "id": "Citrato-Magnesio-150g-SinB6",
         "nombre": "Citrato de Magnesio 150g (60 Porciones)",
         "categoria": "Minerales",
@@ -28,7 +28,7 @@ PRODUCTOS = [ {
         "imagen": "Citrato-Magnesio-150g-SinB6.jpg",
         "presentaciones": [{"tamano": "150 g (60 porciones)", "precio": None}]
     },
-    {
+        {
         "id": "Citrato-Magnesio-150g-ConB6",
         "nombre": "Citrato de Magnesio con Vitamina B6 150g",
         "categoria": "Minerales",
@@ -37,7 +37,7 @@ PRODUCTOS = [ {
         "imagen": "Citrato-Magnesio-150g-ConB6.jpg",
         "presentaciones": [{"tamano": "150 g (Con Vitamina B6)", "precio": None}]
     },
-    {
+        {
         "id": "Optimus-Collagen",
         "nombre": "Optimus Collagen Hidrolizado (Sabor Fresa)",
         "categoria": "Colágenos",
@@ -46,7 +46,7 @@ PRODUCTOS = [ {
         "imagen": "Optimus-Collagen.jpg",
         "presentaciones": [{"tamano": "240 g (Sabor Fresa)", "precio": None}]
     },
-    {
+        {
         "id": "Classic-Whey-Protein",
         "nombre": "Classic Whey Protein (Sabor Vainilla)",
         "categoria": "Proteínas",
@@ -54,8 +54,8 @@ PRODUCTOS = [ {
         "detalle": "Peso líquido: 907g (2 lb). Beneficios: Aporta 24g de proteína, 4.6g de BCAA y 4g de glutamina por porción. Favorece la recuperación muscular, suma a tu proteína diaria y mantiene la masa muscular. Libre de gluten. Modo de uso: Mezclar 1 medida con agua o leche.",
         "imagen": "Classic-Whey-Protein.jpg",
         "presentaciones": [{"tamano": "907 g (Sabor Vainilla)", "precio": None}]
-    },
-      {
+    }, 
+    {
         "id": "Creatina-Monohidratada-Pura",
         "nombre": "Creatina Monohidratada 100% Pura (Sabor Neutro)",
         "categoria": "Creatinas",
@@ -448,8 +448,8 @@ HTML_TEMPLATE = """
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fondo: #050810; --tarjeta: #0c1322; --naranja: #ff6900; --azul: #00cfff;
-            --texto: #f4f7ff; --texto-secundario: #aab7cc; --borde: #1b2c45;
+        --fondo: #050810; --tarjeta: #0c1322; --naranja: #ff6900; --azul: #00cfff;
+        --texto: #f4f7ff; --texto-secundario: #aab7cc; --borde: #1b2c45;
         }
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { margin: 0; background: var(--fondo); color: var(--texto); font-family: 'Inter', sans-serif; }
@@ -469,9 +469,9 @@ HTML_TEMPLATE = """
         #contador { display: inline-flex; background: var(--azul); color: #031018; border-radius: 50%; min-width: 23px; height: 23px; justify-content: center; align-items: center; font-size: 12px; font-weight: 900; }
         
         .hero {position: relative;
-            width: 100%;
-            height: auto; /* Importante para que no quede espacio abajo */
-            background-size: cover; }
+        width: 100%;
+        height: auto; /* Importante para que no quede espacio abajo */
+        background-size: cover; }
         .etiqueta { color: var(--azul); font-weight: 700; letter-spacing: 1px; font-size: 13px; }
         h1 { font-size: clamp(38px, 5vw, 62px); line-height: 1.08; margin: 18px 0; }
         h2 { font-size: 30px; margin-top: 0; margin-bottom: 10px; }
@@ -488,18 +488,86 @@ HTML_TEMPLATE = """
         .tarjeta { min-width: 0; background: linear-gradient(155deg, #111d31, #080d18); border: 1px solid var(--borde); border-radius: 16px; padding: 22px; transition: .2s; }
         .tarjeta:hover { transform: translateY(-5px); border-color: var(--azul); box-shadow: 0 12px 30px #0005; }
         .icono { color: var(--azul); font-size: 32px; margin-bottom: 15px; }
-        .producto-imagen { height: 190px; background: #080b12; border: 1px solid rgba(0,207,255,.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; color: var(--azul); font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 18px; padding: 8px; }
-        .producto-imagen img { width: 100%; height: 100%; object-fit: contain; }
+        .producto-imagen { 
+        height: auto; 
+        min-height: 220px; 
+        background: #080b12; 
+        border: 1px solid rgba(0,207,255,.12); 
+        border-radius: 12px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        overflow: hidden; 
+        margin-bottom: 18px; 
+        padding: 15px; 
+        }
+        .producto-imagen img { 
+        width: 100%; 
+        height: 250px; 
+        object-fit: contain; 
+        }
         .precio { color: var(--azul); font-size: 19px; font-weight: 900; margin: 15px 0; }
         .contacto { background: linear-gradient(110deg, #101b30, #111726); border: 1px solid var(--borde); border-radius: 20px; padding: 30px; text-align: center; }
         footer { background: #06080d; border-top: 1px solid var(--borde); padding: 30px 0; text-align: center; }
 
-        .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.82); justify-content: center; align-items: center; padding: 15px; overflow-y: auto; }
+        .modal { 
+        display: none; 
+        position: fixed; 
+        top: 0; left: 0; right: 0; bottom: 0; /* Fuerza a cubrir toda la pantalla */
+        width: 100%; 
+        height: 100%; 
+        z-index: 9999; /* Asegura que esté por encima de todo */
+        background: rgba(0,0,0,.90); /* Fondo más oscuro */
+        justify-content: center; 
+        align-items: flex-start; 
+        padding: 15px; 
+        overflow-y: auto; 
+        -webkit-overflow-scrolling: touch; /* Scroll suave en iPhone */
+        }
         .modal.activo { display: flex; }
-        .modal-contenido { width: min(650px, 100%); max-height: 95vh; overflow-y: auto; background: #0c1322; border: 1px solid var(--azul); border-radius: 18px; padding: 25px; box-shadow: 0 20px 60px #000a; position: relative; }
-        .cerrar-modal { position: absolute; right: 18px; top: 15px; border: none; background: transparent; color: white; font-size: 26px; cursor: pointer; }
-        .modal-imagen { height: 190px; background: #080b12; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 20px; color: var(--azul); font-size: 23px; font-weight: 900; }
-        .modal-imagen img { height: 100%; width: 100%; object-fit: contain; }
+        .modal-contenido { 
+        width: 100%; 
+        max-width: 650px; 
+        max-height: 95vh; 
+        overflow-y: auto; 
+        background: #0c1322; 
+        border: 1px solid var(--azul); 
+        border-radius: 18px; 
+        padding: 25px; 
+        box-shadow: 0 20px 60px #000a; 
+        position: relative; 
+        margin: auto; /* Centra el contenido */
+        }
+        .cerrar-modal { 
+        position: absolute; 
+        right: 18px; 
+        top: 15px; 
+        border: none; 
+        background: transparent; 
+        color: white; 
+        font-size: 26px; 
+        cursor: pointer; 
+        }
+        .modal-imagen { 
+        width: 100%;
+        height: 300px; /* Altura grande para que se vea bien en celular */
+        background: #080b12; 
+        border-radius: 12px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        overflow: hidden; 
+        margin-bottom: 20px; 
+        color: var(--azul); 
+        font-size: 23px; 
+        font-weight: 900; 
+        }
+        .modal-imagen img { 
+        height: 100%; 
+        width: 100%; 
+        object-fit: contain; 
+        padding: 10px;
+        }
         .campo { margin: 18px 0; }
         .campo label { display: block; margin-bottom: 8px; font-weight: 700; }
         .campo select, .campo input { width: 100%; padding: 13px; background: #080d18; color: white; border: 1px solid #30415b; border-radius: 9px; font-size: 15px; }
@@ -633,7 +701,7 @@ HTML_TEMPLATE = """
             </div>
             <div class="rejilla" id="lista-productos">
                 {% for producto in productos %}
-                <article class="tarjeta">
+                <article class="tarjeta" data-categoria="{{ producto.categoria }}">
                     <div class="producto-imagen">
                         {% if producto.imagen %}
                         <img src="{{ url_for('static', filename=producto.imagen) }}" alt="{{ producto.nombre }}" loading="lazy">
@@ -644,7 +712,7 @@ HTML_TEMPLATE = """
                     <h3>{{ producto.nombre }}</h3>
                     <p>{{ producto.descripcion }}</p>
                     <div class="precio">Consultar precio</div>
-                    <button class="boton" type="button" onclick="abrirProducto('{{ producto.id }}')">
+                    <button class="boton" type="button" onclick="abrirProducto(this.getAttribute('data-id'))" data-id="{{ producto.id }}">
                         Ver producto <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </article>
@@ -892,3 +960,4 @@ def home():
 if __name__ == "__main__":
     print("SUPLEMENTEX disponible en http://127.0.0.1:5000/")
     app.run(debug=True, port=5000)
+
