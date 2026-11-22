@@ -488,11 +488,25 @@ HTML_TEMPLATE = """
         .tarjeta { min-width: 0; background: linear-gradient(155deg, #111d31, #080d18); border: 1px solid var(--borde); border-radius: 16px; padding: 22px; transition: .2s; }
         .tarjeta:hover { transform: translateY(-5px); border-color: var(--azul); box-shadow: 0 12px 30px #0005; }
         .icono { color: var(--azul); font-size: 32px; margin-bottom: 15px; }
+        
+        .producto-imagen { 
+        width: 100%;
+        height: 250px; /* Altura fija para que todas las fotos midan lo mismo */
+        background: #080b12; 
+        border: 1px solid rgba(0,207,255,.12); 
+        border-radius: 12px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        overflow: hidden; /* Clave para que el zoom no se salga */
+        margin-bottom: 18px; /* Separación entre la foto y el título */
+        padding: 0; 
+        }
         .producto-imagen img { 
         width: 100%; 
         height: 100%; 
         object-fit: cover; 
-        transform: scale(1.15); /* Baja el zoom para que no se corte el texto  */
+        transform: scale(1.15); /* El zoom del 15% */
         transition: transform 0.3s ease;
         display: block;
         }
