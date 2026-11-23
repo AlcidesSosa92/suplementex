@@ -491,7 +491,7 @@ HTML_TEMPLATE = """
         
         .producto-imagen { 
             width: 100%;
-            height: 250px; /* Altura del recuadro */
+            height: 250px; /* Altura fija ideal para que se vea la foto */
             background: #080b12; 
             border: 1px solid rgba(0,207,255,.12); 
             border-radius: 12px; 
@@ -506,8 +506,9 @@ HTML_TEMPLATE = """
         .producto-imagen img { 
             width: 100%; 
             height: 100%; 
-            object-fit: contain; /* Hace que la imagen se vea COMPLETA y centrada */
-            transform: scale(1.2); /* Hace un zoom del 20% para que se vea más grande */
+            object-fit: cover; /* Llena el recuadro sin dejar bordes negros */
+            object-position: center center; /* Centra el frasco perfectamente */
+            transform: scale(1.35); /* El zoom justo para que destaque sin cortarse */
             transition: transform 0.3s ease;
             display: block;
         }
@@ -708,12 +709,12 @@ HTML_TEMPLATE = """
             <div class="rejilla" id="lista-productos">
                 {% for producto in productos %}
                 <article class="tarjeta" data-categoria="{{ producto.categoria }}">
-                    <div class="producto-imagen">
-                        {% if producto.imagen %}
-                        <img src="{{ url_for('static', filename=producto.imagen) }}" alt="{{ producto.nombre }}" loading="lazy">
-                        {% else %}
-                        {{ producto.nombre }}
-                        {% endif %}
+                <div class="producto-imagen" onclick="abrirProducto('{{ producto.id }}')" style="cursor: pointer;">
+                    {% if producto.imagen %}
+                    <img src="{{ url_for('static', filename=producto.imagen) }}" alt="{{ producto.nombre }}" loading="lazy">
+                    {% else %}
+                    {{ producto.nombre }}
+                    {% endif %}
                     </div>
                     <h3>{{ producto.nombre }}</h3>
                     <p>{{ producto.descripcion }}</p>
