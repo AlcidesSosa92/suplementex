@@ -503,13 +503,12 @@ HTML_TEMPLATE = """
             padding: 0; 
         }
         
-        .producto-imagen img { 
-            width: 100%; 
+            .modal-imagen img { 
             height: 100%; 
-            object-fit: cover; 
+            width: 100%; 
+            object-fit: cover; /* Recorta la raya naranja */
             object-position: center center; 
-            transform: scale(1.05); /* Un zoom muy leve */
-            transition: transform 0.3s ease; 
+            padding: 0; 
         }
         .modal { 
         display: none; 
@@ -966,5 +965,4 @@ def home():
 if __name__ == "__main__":
     print("SUPLEMENTEX disponible en http://127.0.0.1:5000/")
     app.run(debug=True, port=5000)
-
 
