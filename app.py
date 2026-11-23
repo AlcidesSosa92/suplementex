@@ -492,7 +492,7 @@ HTML_TEMPLATE = """
         .producto-imagen { 
             width: 100%;
             height: 250px; 
-            background: #080b12; 
+            background: #080b12; /* Fondo oscuro */
             border: 1px solid rgba(0,207,255,.12); 
             border-radius: 12px; 
             display: flex; 
@@ -506,11 +506,11 @@ HTML_TEMPLATE = """
         .producto-imagen img { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; 
-            object-position: center center; 
+            object-fit: contain; /* Muestra la foto completa, sin recortar */
+            object-position: center center; /* Centrado perfecto */
             padding: 0; 
-            transform: scale(1.2); /* AGREGA ESTA LÍNEA: Zoom del 25% */
             transition: transform 0.3s ease; 
+            /* BORRAMOS la línea del transform: scale(1.2) */
         }
         .modal { 
         display: none; 
@@ -967,3 +967,4 @@ def home():
 if __name__ == "__main__":
     print("SUPLEMENTEX disponible en http://127.0.0.1:5000/")
     app.run(debug=True, port=5000)
+
