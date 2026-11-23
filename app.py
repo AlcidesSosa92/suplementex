@@ -490,25 +490,26 @@ HTML_TEMPLATE = """
         .icono { color: var(--azul); font-size: 32px; margin-bottom: 15px; }
         
         .producto-imagen { 
-        width: 100%;
-        height: 250px; /* Altura fija para que todas las fotos midan lo mismo */
-        background: #080b12; 
-        border: 1px solid rgba(0,207,255,.12); 
-        border-radius: 12px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        overflow: hidden; /* Clave para que el zoom no se salga */
-        margin-bottom: 18px; /* Separación entre la foto y el título */
-        padding: 0; 
+            width: 100%;
+            height: 250px; /* Altura del recuadro */
+            background: #080b12; 
+            border: 1px solid rgba(0,207,255,.12); 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            margin-bottom: 18px; 
+            padding: 0; 
         }
+        
         .producto-imagen img { 
-        width: 100%; 
-        height: 100%; 
-        object-fit: cover; 
-        transform: scale(1.15); /* El zoom del 15% */
-        transition: transform 0.3s ease;
-        display: block;
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Hace que la imagen se vea COMPLETA y centrada */
+            transform: scale(1.2); /* Hace un zoom del 20% para que se vea más grande */
+            transition: transform 0.3s ease;
+            display: block;
         }
         .modal { 
         display: none; 
