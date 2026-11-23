@@ -507,8 +507,10 @@ HTML_TEMPLATE = """
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: center center; /* CENTRADO */
+            object-position: center center; 
             padding: 0; 
+            transform: scale(1.2); /* AGREGA ESTA LÍNEA: Zoom del 25% */
+            transition: transform 0.3s ease; 
         }
         .modal { 
         display: none; 
