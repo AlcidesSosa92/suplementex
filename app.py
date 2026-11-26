@@ -358,7 +358,7 @@ PRODUCTOS = [ {
         "categoria": "Huesos y Articulaciones",
         "descripcion": "Fórmula natural que combina cartílago de tiburón y calcio de ostra para fortalecer huesos y mejorar la flexibilidad articular.",
         "detalle": "Aporta calcio esencial para huesos fuertes y ayuda a mantener el buen funcionamiento de las articulaciones. Contribuye a la regeneración del tejido cartilaginoso. Modo de uso: Tomar 1 a 2 cápsulas al día.",
-        "imagen": "carti-calcio.jpg",
+        "imagen": "carti-calcio(2).jpg",
         "presentaciones": [{"tamano": "120 cápsulas", "precio": None}, {"tamano": "60 cápsulas", "precio": None}]
     },
     {
@@ -966,3 +966,4 @@ def home():
 if __name__ == "__main__":
     print("SUPLEMENTEX disponible en http://127.0.0.1:5000/")
     app.run(debug=True, port=5000)
+
